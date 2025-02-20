@@ -1,7 +1,10 @@
 
 <script lang="ts">
+      import { initAOS } from "../aos";
+
+initAOS()
  import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
- import { faNodeJs, faReact,faFacebookF, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 </script>
 
 
@@ -10,7 +13,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <!-- Left Div -->
-        <div class="w-full rounded-xl overflow-hidden shadow-lg  transform hover:shadow-2xl mt-10">
+        <div class="w-full rounded-xl overflow-hidden shadow-lg  transform hover:shadow-2xl mt-10" data-aos="fade-right">
             <img src="/contact.webp" class="w-full p-5 rounded-3xl transition duration-300 ease-in-out hover:scale-105" alt=" "/>
 
            <div class="p-5">
@@ -26,7 +29,7 @@
             <h1 class="text-xs uppercase tracking-widest font-semibold text-white">Find with me</h1>
 
             <div class="flex gap-5 mt-5 text-3xl ">
-                <FontAwesomeIcon icon={faFacebookF} class="text-blue-500" />
+                <FontAwesomeIcon icon={faLinkedin} class="text-blue-500" />
                 <FontAwesomeIcon icon={faGithub} class="text-red-500" />
             </div>
            </div>
@@ -35,7 +38,7 @@
         </div>
 
         <!-- Right Div -->
-        <div class="w-full rounded-xl p-10 overflow-hidden shadow-lg transform hover:shadow-2xl">
+        <div class="w-full rounded-xl p-10 overflow-hidden shadow-lg transform hover:shadow-2xl" data-aos="fade-left">
 
 
            <div class="flex gap-5 flex-wrap">

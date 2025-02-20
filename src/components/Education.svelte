@@ -1,7 +1,9 @@
 
 
 <script lang="ts">
+  import { initAOS } from "../aos";
 
+  initAOS()
     let activeTab = "education"
 
 
@@ -85,6 +87,7 @@
     ]
 
 
+
 </script>
 
 <div class="container mx-auto p-4">
@@ -98,8 +101,8 @@
 
     {#if activeTab === "education"}
     <div > 
-        {#each education as {degress,institute,cgpa,session} }
-            <div class="p-4 border border-[#130808] mb-2 rounded-md mt-10 ">
+        {#each education as {degress,institute,cgpa,session},index }
+            <div class="p-4 border border-[#130808] mb-2 rounded-md mt-10" data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}>
                <div class="flex justify-between">
                 <h2 class="text-[#FF014F] text-lg md:text-2xl">{degress}</h2>
                 <p class="text-xs md:text-sm italic">({session})</p>
@@ -113,8 +116,8 @@
     {:else if activeTab === "skill"}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 transition:fade">
         {#each professional as {tech, value}, index}
-          <div class="flex flex-col">
-            <h3 class="text-[#FF014F] font-semibold text-base mb-1">{tech}</h3>
+          <div class="flex flex-col" data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}>
+            <h3 class="text-[#FF014F] font-semibold text-base mb-1" >{tech}</h3>
             <progress class="w-full h-2 rounded-md overflow-hidden" value={value} max="100"></progress>
           </div>
         {/each}

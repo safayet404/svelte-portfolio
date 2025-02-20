@@ -1,5 +1,42 @@
 <script lang="ts">
+
+import { initAOS } from "../aos";
+
+initAOS()
     const project = [
+      {
+          name : "E - Commerce (Ongoing)",
+          description : "A modern and responsive e-commerce platform with seamless product browsing, secure checkout, and intuitive user experience. Features include product filtering, cart management, order tracking, and a secure payment gateway for a smooth shopping experience.",
+          email : "",
+          password : "",
+          image : "/project5.png",
+          technology : "NextJS, Tailwind , Saleor  , PostgreSQL",
+          client : "https://github.com/safayet404/urban-sailor-next",
+          server : " ",
+          live : "https://www.resom.com.br/"
+      },
+      {
+          name : "News Portal",
+          description : "News Portal A dynamic and user-friendly news portal designed to deliver real-time news updates. The platform offers categories for various topics, an intuitive interface for easy navigation, and a comment section for user interaction. It integrates with reliable news APIs to pull the latest headlines and provides a seamless experience for readers to stay informed.",
+          email : "",
+          password : "",
+          image : "/project4.png",
+          technology : "NextJS, Tailwind , Directus , MySQL",
+          client : "https://github.com/safayet404/child-message-next",
+          server : " ",
+          live : "https://childmessagebengali.com/"
+      },
+      {
+          name : "Semi-Ecommerce Business Profile",
+          description : "A dynamic platform that blends online product showcasing with offline purchasing. Customers can browse products, place inquiries, and connect with sellers for personalized orders. Features include product catalogs, customer inquiries, and order management for a seamless shopping experience.",
+          email : "admin@gmail.com",
+          password : "admin1234",
+          image : "/project6.png",
+          technology : "HTML, Tailwind, JavaScript , Django",
+          client : "https://github.com/safayet404/de-heel",
+          server : " ",
+          live : "https://deheel.com/"
+      },
       {
           name : "Project Management System",
           description : " A robust Project Management System designed to streamline task tracking, team collaboration, and project timelines. Features include task assignment, progress monitoring, and real-time updates to ensure efficient project execution.",
@@ -7,10 +44,11 @@
           password : "safayet",
           image : "/project3.png",
           technology : "ReactJS, NodeJS, ExpressJS, MongoDB",
-          client : "sadadfaf",
-          server : "dadad",
-          live : "dad"
+          client : "https://github.com/safayet404/task-management-system",
+          server : "https://github.com/safayet404/project-pulse-backend",
+          live : "https://project-management-system-cloud.vercel.app"
       },
+     
       {
           name : "Shop Management System",
           description : "It is shop management application for Parul Fabrics Ltd which is fabrics shop where they produce and sell jeans fabrics.This application has some functionality like sell,receive,customer manage and many more.",
@@ -18,9 +56,9 @@
           password : "admin1234",
           image : "/project2.png",
           technology : "ReactJS, NodeJS, ExpressJS, MongoDB",
-          client : "sadadfaf",
-          server : "dadad",
-          live : "dad"
+          client : "https://github.com/safayet404/parul-fabrics-ltd",
+          server : "https://github.com/safayet404/parul-fabrics-ltd-backend",
+          live : "https://parul-fabrics-ltd.vercel.appad"
       },
       {
           name : "Local Luminaries",
@@ -29,25 +67,13 @@
           password : " ",
           image : "/project1.png",
           technology : "ReactJS, NodeJS, ExpressJS, MongoDB",
-          client : "sadadfaf",
-          server : "dadad",
-          live : "dad"
+          client : "https://github.com/safayet404/local-luminaries-frontend",
+          server : "https://github.com/safayet404/local-luminaries-backend",
+          live : "https://local-luminaries.vercel.app/"
       },
     ]
   
-    import { onMount } from "svelte";
-    import AOS from "aos";
-    import "aos/dist/aos.css";
-  
-    onMount(() => {
-      AOS.init({
-        duration: 1200,
-        offset: 100,
-        easing: "ease-in-out",
-        delay: 200,
-        once: false,
-      });
-    });
+   
   </script>
   
   <div class="container mx-auto p-4">
@@ -68,9 +94,17 @@
         <p class="text-[#FF014F] mt-3 text-lg font-semibold">Technology : {technology}</p>
   
         <div class="mt-10 flex gap-5">
-          <button class="border font-semibold px-2 rounded-md text-white text-sm">Client Code</button>
-          <button class="border font-semibold px-2 rounded-md text-white text-sm">Server Code</button>
-          <button class="border font-semibold px-2 rounded-md text-white text-sm">Live Site</button>
+            {#if client.length > 2}
+            <a href="{client}" target="_blank" rel="noopener noreferrer" class="border font-semibold px-2 rounded-md text-white text-sm">Client Code</a>
+
+            
+          {/if}
+            {#if server.length > 2}            
+            <a href="{server}"  target="_blank" rel="noopener noreferrer" class="border font-semibold px-2 rounded-md text-white text-sm">Server Code</a>
+          {/if}
+            {#if live.length > 2}            
+            <a href="{live}"  target="_blank" rel="noopener noreferrer" class="border font-semibold px-2 rounded-md text-white text-sm">Live Site</a>
+          {/if}
         </div>
       </div>
   

@@ -1,8 +1,13 @@
 
+<script lang="ts">
+  import { initAOS } from "../aos";
 
-<div class="container mx-auto p-4 mt-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 ">
-        <div>
+initAOS()
+</script>
+
+<div class="container mx-auto p-4 mt-20" >
+    <div class="grid grid-cols-1 md:grid-cols-2" >
+        <div data-aos="fade-right">
             <h1 class="text-[#FF014F] text-3xl uppercase">Know Me</h1>
             <h2 class="mt-4 text-white text-sm leading-loose">
                 I'm a passionate web developer dedicated to crafting innovative digital experiences that leave a lasting impact. With a keen eye for detail and a drive for excellence, I specialize in creating dynamic websites that not only look stunning but also function flawlessly across all platforms.
@@ -23,7 +28,7 @@ Beyond coding, I'm deeply passionate about staying up-to-date with the latest tr
             </h2>
         </div>
 
-        <div>
+        <div data-aos="fade-left">
             <img  src="/safayet.png" alt=" " loading="lazy"/>
         </div>
     </div>

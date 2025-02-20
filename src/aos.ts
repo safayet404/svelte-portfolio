@@ -7,11 +7,15 @@ import "aos/dist/aos.css";
 export function initAOS() {
   onMount(() => {
     AOS.init({
-      duration: 1200,
+      duration: 800,
       offset: 100,
       easing: "ease-in-out",
       delay: 200,
       once: false, // Re-run the animation every time the element comes into view
     });
+
+    window.addEventListener("scroll", () => {
+        AOS.refresh();
+      });
   });
 }
