@@ -93,7 +93,7 @@
 <div class="container mx-auto p-4">
     <div class="flex justify-center gap-5">
         {#each tabs as {id,label} }
-            <button class=" gap-5 text-base text-center border px-10 py-2 rounded-lg font-semibold text-white mb-2" on:click={() => (activeTab = id)}>
+            <button class=" gap-5 text-sm md:text-base text-center border px-10 py-2 rounded-lg font-semibold text-white mb-2" on:click={() => (activeTab = id)}>
                 {label}
             </button>
         {/each}
@@ -118,7 +118,7 @@
         {#each professional as {tech, value}, index}
           <div class="flex flex-col" data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}>
             <h3 class="text-[#FF014F] font-semibold text-base mb-1" >{tech}</h3>
-            <progress class="w-full h-2 rounded-md overflow-hidden" value={value} max="100"></progress>
+            <progress class="w-full h-2 rounded-md overflow-hidden text-[#0064BA]" value={value} max="100"></progress>
           </div>
         {/each}
       </div>
