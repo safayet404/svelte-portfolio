@@ -3,7 +3,6 @@
   import "../app.css";
   import Footer from "../components/Footer.svelte";
   import { fade } from "svelte/transition";
-  import { cubicOut } from "svelte/easing";
 </script>
 
 <style>
@@ -15,11 +14,14 @@
 </style>
 
 <!-- Navbar -->
-
 <div class="flex flex-col transition-container">
   <Navbar />
+
   <main class="flex-grow" transition:fade={{ duration: 500 }}>
-    <slot />  <!-- This renders the current page's content -->
+    <section id="home">
+      <slot />  <!-- Renders current page content -->
+    </section>
   </main>
+
   <Footer />
 </div>

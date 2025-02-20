@@ -1,20 +1,30 @@
 <script>
-  import Education from "../components/Education.svelte";
-import HeroSection from "../components/HeroSection.svelte";
-  import KnowMe from "../components/KnowMe.svelte";
+  import HeroSection from "../components/HeroSection.svelte";
 
-  import { fade, slide } from "svelte/transition";
-  import { cubicOut } from "svelte/easing";
   import Contact from "../components/Contact.svelte";
+  import KnowMe from "../components/KnowMe.svelte";
   import Project from "../components/Project.svelte";
-
+  import Education from "../components/Education.svelte";
 </script>
 
+<div>
+  <section id="home">
+    <HeroSection />
+  </section>
 
-<div transition:fade="{{duration: 500, easing: cubicOut}}">
-  <HeroSection />
-  <KnowMe/>
-  <Project />
-  <Education />
-  <Contact />
+  <section id="about">
+    <KnowMe />
+  </section>
+
+  <section id="projects">
+    <Project />
+  </section>
+
+  <section id="education">
+    <Education />
+  </section>
+
+  <section id="contact">
+    <Contact />
+  </section>
 </div>
