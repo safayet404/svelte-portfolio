@@ -66,7 +66,7 @@ initAOS()
 
            <div class="flex flex-col w-full mt-5">
             <label for="message" class="uppercase text-xs tracking-widest mb-4">your message</label>
-            <textarea class="w-full h-28 md:h-96 outline-none p-2 rounded-lg bg-[#191B1E]" ></textarea>
+            <textarea class="w-full h-28 md:h-96 outline-none p-2 rounded-lg bg-white text-black" ></textarea>
            </div>
 
            <button class="text-[#FF104F] rounded-lg px-5 py-2 mt-5 
