@@ -90,6 +90,11 @@
           </button>
         </li>
         <li>
+          <button type="button" on:click={() => scrollToSection("education")} class="nav-link">
+            Education-Skill
+          </button>
+        </li>
+        <li>
           <button type="button" on:click={() => scrollToSection("contact")} class="nav-link">
             Contact
           </button>
