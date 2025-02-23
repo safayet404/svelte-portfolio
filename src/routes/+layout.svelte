@@ -14,7 +14,7 @@
 </style>
 
 <!-- Navbar -->
-<div class="flex flex-col transition-container">
+<div class="flex flex-col transition-container bg-[#1D232A]">
   <Navbar />
 
   <main class="flex-grow" transition:fade={{ duration: 500 }}>

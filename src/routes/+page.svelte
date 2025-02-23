@@ -5,6 +5,7 @@
   import KnowMe from "../components/KnowMe.svelte";
   import Project from "../components/Project.svelte";
   import Education from "../components/Education.svelte";
+  import Timezone from "../components/Timezone.svelte";
 </script>
 
 <div>

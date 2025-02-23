@@ -16,7 +16,7 @@
   }
 </script>
 
-<div class="bg-base-100 fixed top-0 left-0 right-0 z-50">
+<div class=" fixed top-0 left-0 right-0 z-50 bg-[#1D232A]">
   <div class="navbar container mx-auto flex justify-between items-center p-4">
     
     <!-- Left side navbar -->
