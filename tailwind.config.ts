@@ -9,5 +9,9 @@ export default {
     extend: {}
   },
 
-  plugins: [daisyui]
+  plugins: [daisyui],
+
+  daisyui : {
+    themes : ["dark"]
+  }
 } as Config;
