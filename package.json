@@ -38,6 +38,7 @@
 		"gsap": "^3.12.7",
 		"nodemailer": "^7.0.3",
 		"simple-icons": "^14.7.0",
-		"svelte-add": "^2.7.3"
+		"svelte-add": "^2.7.3",
+		"svelte-french-toast": "^1.2.0"
 	}
 }

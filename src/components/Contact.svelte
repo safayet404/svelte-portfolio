@@ -4,6 +4,7 @@
 
     import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
     import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+    import toast from "svelte-french-toast";
 
     let form = {
         name: "",
@@ -32,6 +33,7 @@
             success = "Message sent successfully!";
             error = "";
             form = { name: "", email: "", phone: "", subject: "", message: "" };
+            toast.success("Email Sent Successfully !");
         } else {
             error = "Failed to send message.";
             success = "";

@@ -5,8 +5,10 @@
   import KnowMe from "../components/KnowMe.svelte";
   import Project from "../components/Project.svelte";
   import Education from "../components/Education.svelte";
-  import Timezone from "../components/Timezone.svelte";
+  import { Toaster } from "svelte-french-toast";
 </script>
+
+<Toaster />
 
 <div>
   <section id="home">
