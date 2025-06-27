@@ -30,7 +30,7 @@ tag="h1"
             text={`A passionate web developer with a flair for crafting elegant and
             efficient solutions`}
             speed={40}
-            className="mt-4 text-xl md:text-5xl font-bold text-white"
+            className="mt-4 text-xl md:text-5xl font-bold  text-white"
             tag="h1"
         />
     </div>

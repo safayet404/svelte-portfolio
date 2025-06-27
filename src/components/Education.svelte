@@ -84,7 +84,7 @@
     ];
 </script>
 
-<div class=" mx-auto">
+<div class=" mx-auto mt-14">
     <div class="flex justify-center gap-5">
         {#each tabs as { id, label }}
             <button
@@ -113,7 +113,7 @@
                 <div class="container flex justify-between mx-auto">
                     <div data-aos="fade-left" class="flex gap-3">
                         <img
-                            class="lg:w-[180px] w-20 h-20 sm:w-24 sm:h-28 md:h-32 md:w-28 lg:h-[200px]"
+                            class="lg:w-[180px] w-20 h-24 sm:w-24 sm:h-28 md:h-32 md:w-28 lg:h-[200px]"
                             src="/unisa-logo.png"
                             alt="varsity"
                         />
@@ -122,27 +122,32 @@
                             class="flex flex-col gap-10 my-auto"
                         >
                             <h1
-                                class="uppercase font-bold text-white text-sm sm:text-xl md:text-3xl lg:text-5xl"
+                                class="uppercase font-bold text-white text-[10px] sm:text-xl md:text-3xl lg:text-5xl"
                             >
                                 University of South Asia
                             </h1>
                             <p
-                                class="text-white text-x md:text-base lg:text-base font-semibold"
+                                class="text-white hidden sm:block text-[10px] md:text-base lg:text-base font-semibold"
                             >
                                 BSc in Computer Science and Engineering
+                            </p>
+                            <p
+                                class="text-white block sm:hidden text-xs sm:text-sm md:text-base lg:text-base font-semibold"
+                            >
+                                BSc in CSE
                             </p>
                         </div>
                     </div>
                     <div class="flex flex-col my-auto gap-10">
                         <h1
                             data-aos="fade-left"
-                            class="font-medium mx-auto text-white text-sm md:text-3xl sm:text-xl lg:text-5xl"
+                            class="font-medium mx-auto text-white text-sm md:text-3xl sm:text-xl lg:text-3xl"
                         >
                             CGPA
                         </h1>
                         <h2
                             data-aos="fade-right"
-                            class="text-white mx-auto font-bold text-xs md:text-3xl sm:text-xl lg:text-5xl"
+                            class="text-white mx-auto font-bold text-xs md:text-3xl sm:text-xl lg:text-3xl"
                         >
                             3.98/4.00
                         </h2>
