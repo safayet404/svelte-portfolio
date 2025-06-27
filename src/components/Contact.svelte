@@ -1,9 +1,42 @@
 <script lang="ts">
     import { initAOS } from "../aos";
-
     initAOS();
+
     import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
     import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
+    let form = {
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+    };
+    let success = "";
+    let error = "";
+
+    async function handleSubmit(event: SubmitEvent) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        for (const key in form) {
+            formData.append(key, form[key as keyof typeof form]);
+        }
+
+        const res = await fetch("/api/contact", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (res.ok) {
+            success = "Message sent successfully!";
+            error = "";
+            form = { name: "", email: "", phone: "", subject: "", message: "" };
+        } else {
+            error = "Failed to send message.";
+            success = "";
+        }
+    }
 </script>
 
 <div class="container mx-auto p-4">
@@ -62,7 +95,8 @@
         </div>
 
         <!-- Right Div -->
-        <div
+        <form
+            on:submit={handleSubmit}
             class="w-full rounded-xl p-10 overflow-hidden shadow-lg transform hover:shadow-2xl"
             data-aos="fade-left"
         >
@@ -77,6 +111,8 @@
                         id="name"
                         type="text"
                         name="name"
+                        bind:value={form.name}
+                        required
                         class="bg-white h-10 rounded-lg text-black p-2 outline-none"
                     />
                 </div>
@@ -87,9 +123,10 @@
                         >your mobile</label
                     >
                     <input
-                        id="name"
+                        id="phone"
                         type="text"
                         name="phone"
+                        bind:value={form.phone}
                         class="bg-white h-10 rounded-lg text-black p-2 outline-none"
                     />
                 </div>
@@ -103,8 +140,10 @@
                 >
                 <input
                     id="email"
-                    type="text"
+                    type="email"
                     name="email"
+                    bind:value={form.email}
+                    required
                     class="bg-white h-10 rounded-lg text-black p-2 outline-none"
                 />
             </div>
@@ -119,6 +158,7 @@
                     id="subject"
                     type="text"
                     name="subject"
+                    bind:value={form.subject}
                     class="bg-white h-10 rounded-lg text-black p-2 outline-none"
                 />
             </div>
@@ -130,17 +170,26 @@
                     >your message</label
                 >
                 <textarea
+                    id="message"
+                    name="message"
+                    bind:value={form.message}
+                    required
                     class="w-full h-28 md:h-32 lg:h-72 outline-none p-2 rounded-lg bg-white text-black"
                 ></textarea>
             </div>
 
             <button
-                class="text-[#FF104F] rounded-lg px-5 py-2 mt-5
-           shadow-[0_4px_15px_rgba(255,255,255,0.3)]
-           hover:shadow-[0_6px_20px_rgba(255,255,255,0.5)]"
+                type="submit"
+                class="text-[#FF104F] rounded-lg px-5 py-2 mt-5 shadow-[0_4px_15px_rgba(255,255,255,0.3)] hover:shadow-[0_6px_20px_rgba(255,255,255,0.5)]"
             >
                 Send Message
             </button>
-        </div>
+
+            {#if success}
+                <p class="mt-2 text-green-400 text-sm">{success}</p>
+            {:else if error}
+                <p class="mt-2 text-red-400 text-sm">{error}</p>
+            {/if}
+        </form>
     </div>
 </div>
