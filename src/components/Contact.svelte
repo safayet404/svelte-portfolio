@@ -130,7 +130,7 @@
                     >your message</label
                 >
                 <textarea
-                    class="w-full h-28 md:h-96 outline-none p-2 rounded-lg bg-white text-black"
+                    class="w-full h-28 md:h-32 lg:h-72 outline-none p-2 rounded-lg bg-white text-black"
                 ></textarea>
             </div>
 
