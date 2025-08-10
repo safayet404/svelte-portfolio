@@ -10,7 +10,7 @@
       email: "",
       password: "",
       image: "/project5.png",
-      technology: "NextJS, Tailwind , Saleor  , PostgreSQL",
+      technology: "SvelteKit, Tailwind , Saleor  , PostgreSQL",
       client: "https://github.com/safayet404/urban-sailor-next",
       server: " ",
       live: "https://www.resom.com.br/",
@@ -79,14 +79,14 @@
   ];
 </script>
 
-<div class="container mx-auto p-4">
+<div class="container mx-auto p-4 mt-20">
   <h1
     class="font-semibold text-[#FF104F] text-2xl text-center md:text-left md:text-3xl uppercase mb-0 md:mb-5"
   >
     Projects
   </h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-between mt-5">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-between">
     {#each project as { name, description, email, password, image, technology, client, server, live }, index}
       <div class="mt-10 md:mt-40" data-aos="fade-right">
         <h1 class="text-lg uppercase text-white font-semibold">

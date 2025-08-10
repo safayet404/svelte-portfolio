@@ -18,13 +18,12 @@
   <section id="about">
     <KnowMe />
   </section>
+  <section id="education">
+    <Education />
+  </section>
 
   <section id="projects">
     <Project />
-  </section>
-
-  <section id="education">
-    <Education />
   </section>
 
   <section id="contact">
