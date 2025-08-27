@@ -4,12 +4,12 @@
   initAOS();
   const project = [
     {
-      name: "E - Commerce (Ongoing)",
+      name: "E - Commerce",
       description:
         "A modern and responsive e-commerce platform with seamless product browsing, secure checkout, and intuitive user experience. Features include product filtering, cart management, order tracking, and a secure payment gateway for a smooth shopping experience.",
       email: "",
       password: "",
-      image: "/project5.png",
+      image: "/resom.png",
       technology: "SvelteKit, Tailwind , Saleor  , PostgreSQL",
       client: "https://github.com/safayet404/urban-sailor-next",
       server: " ",
