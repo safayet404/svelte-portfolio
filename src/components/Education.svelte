@@ -108,52 +108,102 @@
                <p class="mt-4 border inline-block px-4 py-2 rounded-lg">{cgpa}</p>
             </div>
         {/each} -->
+<div data-aos="fade-down" class="relative bg-[#050014] overflow-hidden">
+    <!-- Ambient background effects -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-orange-500/8 rounded-full blur-2xl translate-y-1/2"></div>
+        <!-- Subtle grid lines -->
+        <div class="absolute inset-0 opacity-[0.03]"
+             style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+    </div>
 
-            <div data-aos="fade-down" class=" bg-[#050014] p-5 mt-10">
-                <div class="container flex justify-between mx-auto">
-                    <div data-aos="fade-left" class="flex gap-3">
+    <!-- Top border accent -->
+    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent"></div>
+
+    <div class="container mx-auto px-6 py-8 lg:py-10 relative z-10">
+        <div class="flex items-center justify-between gap-6">
+
+            <!-- Left: Logo + Info -->
+            <div data-aos="fade-right" class="flex items-center gap-5 lg:gap-7">
+                <!-- Logo with glow ring -->
+                <div class="relative flex-shrink-0">
+                    <div class="absolute inset-0 bg-red-500/20 rounded-full blur-xl scale-110"></div>
+                    <div class="relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm p-1.5 lg:p-2">
                         <img
-                            class="lg:w-[180px] w-20 h-24 sm:w-24 sm:h-28 md:h-32 md:w-28 lg:h-[200px]"
+                            class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain"
                             src="/unisa-logo.png"
-                            alt="varsity"
+                            alt="University of South Asia"
                         />
-                        <div
-                            data-aos="fade-right"
-                            class="flex flex-col gap-10 my-auto"
-                        >
-                            <h1
-                                class="uppercase font-bold text-white text-[10px] sm:text-xl md:text-3xl lg:text-5xl"
-                            >
-                                University of South Asia
-                            </h1>
-                            <p
-                                class="text-white hidden sm:block text-[10px] md:text-base lg:text-base font-semibold"
-                            >
-                                BSc in Computer Science and Engineering
-                            </p>
-                            <p
-                                class="text-white block sm:hidden text-xs sm:text-sm md:text-base lg:text-base font-semibold"
-                            >
-                                BSc in CSE
-                            </p>
-                        </div>
                     </div>
-                    <div class="flex flex-col my-auto gap-10">
-                        <h1
-                            data-aos="fade-left"
-                            class="font-medium mx-auto text-white text-sm md:text-3xl sm:text-xl lg:text-3xl"
-                        >
+                </div>
+
+                <!-- Text info -->
+                <div class="flex flex-col gap-2 lg:gap-3">
+                    <!-- Label tag -->
+                    <span class="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-red-400/80 bg-red-500/10 border border-red-500/20 rounded-full px-2.5 py-1 w-fit">
+                        <span class="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse"></span>
+                        Education
+                    </span>
+
+                    <h1 class="font-black text-white tracking-tight
+                               text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-tight">
+                        University of<br class="hidden sm:block lg:hidden"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-red-200"> South Asia</span>
+                    </h1>
+
+                    <p class="text-white/50 font-medium tracking-wide
+                              hidden sm:block text-xs md:text-sm lg:text-base">
+                        BSc in Computer Science & Engineering
+                    </p>
+                    <p class="text-white/50 font-medium text-xs block sm:hidden">
+                        BSc in CSE
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: CGPA Card -->
+            <div data-aos="fade-left" class="flex-shrink-0">
+                <div class="relative group">
+                    <!-- Glow behind card -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-500/30 to-orange-500/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    <!-- Card -->
+                    <div class="relative border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl px-5 py-4 sm:px-7 sm:py-5 lg:px-8 lg:py-6 text-center
+                                hover:border-red-500/30 transition-all duration-300">
+                        <!-- Shimmer line -->
+                        <div class="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+
+                        <p class="text-white/40 text-[10px] sm:text-xs lg:text-sm font-semibold tracking-[0.2em] uppercase mb-2">
                             CGPA
-                        </h1>
-                        <h2
-                            data-aos="fade-right"
-                            class="text-white mx-auto font-bold text-xs md:text-3xl sm:text-xl lg:text-3xl"
-                        >
-                            3.98/4.00
-                        </h2>
+                        </p>
+
+                        <div class="flex items-baseline justify-center gap-0.5">
+                            <span class="font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-red-200
+                                         text-2xl sm:text-3xl md:text-4xl lg:text-5xl tabular-nums">
+                                3.98
+                            </span>
+                            <span class="text-white/30 font-light text-base sm:text-xl lg:text-2xl">/4.00</span>
+                        </div>
+
+                        <!-- Star rating dots -->
+                        <div class="flex justify-center gap-1 mt-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-400/50"></span>
+                        </div>
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom border accent -->
+    <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+</div>
         </div>
     {:else if activeTab === "skill"}
         <div class="container mx-auto">
