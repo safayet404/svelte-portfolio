@@ -108,7 +108,7 @@
                <p class="mt-4 border inline-block px-4 py-2 rounded-lg">{cgpa}</p>
             </div>
         {/each} -->
-<div data-aos="fade-down" class="relative bg-[#050014] overflow-hidden">
+<div data-aos="fade-down" class="relative bg-[#050014] overflow-hidden mt-5">
     <!-- Ambient background effects -->
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -translate-y-1/2"></div>
