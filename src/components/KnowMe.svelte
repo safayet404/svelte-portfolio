@@ -29,7 +29,7 @@ Beyond coding, I'm deeply passionate about staying up-to-date with the latest tr
         </div>
 
         <div data-aos="fade-left">
-            <img  src="/safayet.png" alt=" " loading="lazy"/>
+            <img  src="/me.png" alt=" " loading="lazy"/>
         </div>
     </div>
 </div>
