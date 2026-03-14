@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { initLocale, locale } from "$lib/i18n";
+  import { onMount } from "svelte";
   import { fly } from "svelte/transition";
 
   let isMenuOpen = false;
@@ -13,6 +15,14 @@
       section.scrollIntoView({ behavior: "smooth" });
       isMenuOpen = false; // Close menu after clicking
     }
+  }
+
+  onMount(() => {
+    initLocale(); // Detect language on load
+  });
+
+  function toggleLanguage() {
+    locale.update((l) => (l === "en" ? "bn" : "en"));
   }
 </script>
 
