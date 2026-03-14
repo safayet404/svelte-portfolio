@@ -1,6 +1,8 @@
 <script lang="ts">
     import { initAOS } from "../aos";
     initAOS();
+    import { locale, translations } from "$lib/i18n";
+    $: t = translations[$locale];
 
     import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
     import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
