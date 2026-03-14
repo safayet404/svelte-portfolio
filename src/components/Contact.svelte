@@ -2,7 +2,6 @@
     import { initAOS } from "../aos";
     initAOS();
     import { locale, translations } from "$lib/i18n";
-    $: t = translations[$locale];
 
     import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
     import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -47,7 +46,11 @@
     <h1
         class="uppercase text-[#FF014F] text-lg text-center md:text-left md:text-3xl mt-5"
     >
-        Contact with me
+        {#if $locale === "bn"}
+            যোগাযোগ করুন
+        {:else}
+            Contact with me
+        {/if}
     </h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <!-- Left Div -->
@@ -62,18 +65,47 @@
             />
 
             <div class="p-5">
-                <h1>Safayet Hossain</h1>
+                <h1>
+                    {#if $locale === "bn"}
+                        সাফায়েত হোসেন
+                    {:else}
+                        Safayet Hossain
+                    {/if}
+                </h1>
                 <p>
-                    House : 153, Primary School Road <br /> Dakshinkhan,Uttara,Dhaka
+                    {#if $locale === "bn"}
+                        হাউস : ১৫৩,প্রাইমারী স্কুল রোড
+                    {:else}
+                        House : 153, Primary School Road
+                    {/if} <br />
+                    {#if $locale === "bn"}
+                        দক্ষিণখান ,উত্তরা , ঢাকা
+                    {:else}
+                        Dakshinkhan,Uttara,Dhaka
+                    {/if}
                 </p>
 
                 <p class="mt-10">
-                    Phone : <span class="text-white"> 01679175553</span>
+                    {#if $locale === "bn"}
+                        ফোন :
+                    {:else}
+                        Phone :
+                    {/if}
+                    <span class="text-white">
+                        {#if $locale === "bn"}
+                            ০১৬৭৯১৭৫৫৫৩
+                        {:else}
+                            01679175553
+                        {/if}
+                    </span>
                 </p>
                 <p>
-                    Email : <span class="text-white"
-                        >hossainsafayet187@gmail.com</span
-                    >
+                    {#if $locale === "bn"}
+                        ইমেইল :
+                    {:else}
+                        Email :
+                    {/if}
+                    <span class="text-white">hossainsafayet187@gmail.com</span>
                 </p>
             </div>
 
@@ -81,7 +113,11 @@
                 <h1
                     class="text-xs uppercase tracking-widest font-semibold text-white"
                 >
-                    Find with me
+                    {#if $locale === "bn"}
+                        যোগাযোগ
+                    {:else}
+                        Find with me
+                    {/if}
                 </h1>
 
                 <div class="flex gap-5 mt-5 text-3xl">
@@ -109,8 +145,13 @@
                     <label
                         for="name"
                         class="uppercase text-xs tracking-widest mb-4"
-                        >your name</label
                     >
+                        {#if $locale === "bn"}
+                            আপনার নাম
+                        {:else}
+                            your name
+                        {/if}
+                    </label>
                     <input
                         id="name"
                         type="text"
@@ -124,7 +165,12 @@
                     <label
                         for="phone"
                         class="uppercase text-xs tracking-widest mb-4"
-                        >your mobile</label
+                    >
+                        {#if $locale === "bn"}
+                            আপনার মোবাইল
+                        {:else}
+                            your mobile
+                        {/if}</label
                     >
                     <input
                         id="phone"
@@ -140,7 +186,12 @@
                 <label
                     for="email"
                     class="uppercase text-xs tracking-widest mb-4"
-                    >your email</label
+                >
+                    {#if $locale === "bn"}
+                        আপনার ইমেইল
+                    {:else}
+                        your email
+                    {/if}</label
                 >
                 <input
                     id="email"
@@ -156,7 +207,12 @@
                 <label
                     for="subject"
                     class="uppercase text-xs tracking-widest mb-4"
-                    >your subject</label
+                >
+                    {#if $locale === "bn"}
+                        বিষয়
+                    {:else}
+                        your subject
+                    {/if}</label
                 >
                 <input
                     id="subject"
@@ -171,7 +227,12 @@
                 <label
                     for="message"
                     class="uppercase text-xs tracking-widest mb-4"
-                    >your message</label
+                >
+                    {#if $locale === "bn"}
+                        ম্যাসেজ লিখুন
+                    {:else}
+                        your message
+                    {/if}</label
                 >
                 <textarea
                     id="message"
@@ -186,7 +247,11 @@
                 type="submit"
                 class="text-[#FF104F] rounded-lg px-5 py-2 mt-5 shadow-[0_4px_15px_rgba(255,255,255,0.3)] hover:shadow-[0_6px_20px_rgba(255,255,255,0.5)]"
             >
-                Send Message
+                {#if $locale === "bn"}
+                    ম্যাসেজ পাঠান
+                {:else}
+                    Send Message
+                {/if}
             </button>
 
             {#if success}

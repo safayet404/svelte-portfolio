@@ -99,7 +99,7 @@
             download
             class="text-[#FF104F] nav-link rounded-lg px-5 py-2 shadow-[0_4px_15px_rgba(255,255,255,0.3)] hover:shadow-[0_6px_20px_rgba(255,255,255,0.5)]"
           >
-            Resume
+            {t.nav_resume}
           </a>
         </li>
 
