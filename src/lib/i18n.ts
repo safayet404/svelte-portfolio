@@ -33,7 +33,12 @@ export const translations: any = {
         "contact_label_email": "EMAIL",
         "contact_label_subject": "YOUR SUBJECT",
         "contact_label_message": "YOUR MESSAGE",
-        "contact_btn": "Send Message"
+        "contact_btn": "Send Message",
+
+        "project_title": "Projects",
+        "project_client": "Client Code",
+        "project_server": "Server Code",
+        "project_live": "Live Site"
     },
     bn: {
         "nav_home": "হোম",
@@ -65,7 +70,12 @@ export const translations: any = {
         "contact_label_email": "ইমেইল",
         "contact_label_subject": "বিষয়",
         "contact_label_message": "আপনার বার্তা",
-        "contact_btn": "মেসেজ পাঠান"
+        "contact_btn": "মেসেজ পাঠান",
+
+        "project_title": "প্রজেক্টসমূহ",
+        "project_client": "ক্লায়েন্ট কোড",
+        "project_server": "সার্ভার কোড",
+        "project_live": "লাইভ সাইট"
     }
 };
 export function initLocale() {
