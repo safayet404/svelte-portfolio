@@ -73,45 +73,45 @@
       server: "",
       live: "https://childmessagebengali.com/",
     },
-    {
-      name: "Semi-Ecommerce Business Profile",
-      name_bn: "সেমি-ইকমার্স বিজনেস প্রোফাইল",
-      description:
-        "A dynamic platform that blends online product showcasing with offline purchasing. Customers can browse products, place inquiries, and connect with sellers for personalized orders. Features include product catalogs, customer inquiries, and order management.",
-      description_bn:
-        "একটি প্ল্যাটফর্ম যেখানে অনলাইনে প্রোডাক্ট দেখা যায় এবং অফলাইনে ক্রয় করা যায়। প্রোডাক্ট ক্যাটালগ, কাস্টমার ইনকোয়ারি এবং অর্ডার ম্যানেজমেন্ট ফিচার রয়েছে।",
-      image: "/project6.png",
-      technology: "HTML, Tailwind, JavaScript , Django",
-      client: "https://github.com/safayet404/de-heel",
-      server: "",
-      live: "https://deheel.com/",
-    },
-    {
-      name: "Project Management System",
-      name_bn: "প্রজেক্ট ম্যানেজমেন্ট সিস্টেম",
-      description:
-        "A robust Project Management System designed to streamline task tracking, team collaboration, and project timelines. Features include task assignment, progress monitoring, and real-time updates to ensure efficient project execution.",
-      description_bn:
-        "একটি শক্তিশালী প্রজেক্ট ম্যানেজমেন্ট সিস্টেম যেখানে টাস্ক ট্র্যাকিং, টিম কোলাবোরেশন এবং প্রজেক্ট টাইমলাইন পরিচালনা করা যায়। টাস্ক অ্যাসাইনমেন্ট, প্রোগ্রেস মনিটরিং এবং রিয়েল-টাইম আপডেট সুবিধা রয়েছে।",
-      image: "/project3.png",
-      technology: "ReactJS, NodeJS, ExpressJS, MongoDB",
-      client: "https://github.com/safayet404/task-management-system",
-      server: "https://github.com/safayet404/project-pulse-backend",
-      live: "https://project-management-system-cloud.vercel.app",
-    },
-    {
-      name: "Shop Management System",
-      name_bn: "শপ ম্যানেজমেন্ট সিস্টেম",
-      description:
-        "It is shop management application for Parul Fabrics Ltd which is a fabrics shop where they produce and sell jeans fabrics. This application has some functionality like sell, receive, customer manage and many more.",
-      description_bn:
-        "পারুল ফেব্রিক্স লিমিটেডের জন্য তৈরি শপ ম্যানেজমেন্ট অ্যাপ্লিকেশন। বিক্রয় ট্র্যাকিং, পণ্য গ্রহণ, কাস্টমার ম্যানেজমেন্ট এবং রিপোর্টিং ফিচার রয়েছে।",
-      image: "/project1.png",
-      technology: "ReactJS, NodeJS, ExpressJS, MongoDB",
-      client: "https://github.com/safayet404/parul-fabrics-ltd",
-      server: "https://github.com/safayet404/parul-fabrics-ltd-backend",
-      live: "",
-    },
+    // {
+    //   name: "Semi-Ecommerce Business Profile",
+    //   name_bn: "সেমি-ইকমার্স বিজনেস প্রোফাইল",
+    //   description:
+    //     "A dynamic platform that blends online product showcasing with offline purchasing. Customers can browse products, place inquiries, and connect with sellers for personalized orders. Features include product catalogs, customer inquiries, and order management.",
+    //   description_bn:
+    //     "একটি প্ল্যাটফর্ম যেখানে অনলাইনে প্রোডাক্ট দেখা যায় এবং অফলাইনে ক্রয় করা যায়। প্রোডাক্ট ক্যাটালগ, কাস্টমার ইনকোয়ারি এবং অর্ডার ম্যানেজমেন্ট ফিচার রয়েছে।",
+    //   image: "/project6.png",
+    //   technology: "HTML, Tailwind, JavaScript , Django",
+    //   client: "https://github.com/safayet404/de-heel",
+    //   server: "",
+    //   live: "https://deheel.com/",
+    // },
+    // {
+    //   name: "Project Management System",
+    //   name_bn: "প্রজেক্ট ম্যানেজমেন্ট সিস্টেম",
+    //   description:
+    //     "A robust Project Management System designed to streamline task tracking, team collaboration, and project timelines. Features include task assignment, progress monitoring, and real-time updates to ensure efficient project execution.",
+    //   description_bn:
+    //     "একটি শক্তিশালী প্রজেক্ট ম্যানেজমেন্ট সিস্টেম যেখানে টাস্ক ট্র্যাকিং, টিম কোলাবোরেশন এবং প্রজেক্ট টাইমলাইন পরিচালনা করা যায়। টাস্ক অ্যাসাইনমেন্ট, প্রোগ্রেস মনিটরিং এবং রিয়েল-টাইম আপডেট সুবিধা রয়েছে।",
+    //   image: "/project3.png",
+    //   technology: "ReactJS, NodeJS, ExpressJS, MongoDB",
+    //   client: "https://github.com/safayet404/task-management-system",
+    //   server: "https://github.com/safayet404/project-pulse-backend",
+    //   live: "https://project-management-system-cloud.vercel.app",
+    // },
+    // {
+    //   name: "Shop Management System",
+    //   name_bn: "শপ ম্যানেজমেন্ট সিস্টেম",
+    //   description:
+    //     "It is shop management application for Parul Fabrics Ltd which is a fabrics shop where they produce and sell jeans fabrics. This application has some functionality like sell, receive, customer manage and many more.",
+    //   description_bn:
+    //     "পারুল ফেব্রিক্স লিমিটেডের জন্য তৈরি শপ ম্যানেজমেন্ট অ্যাপ্লিকেশন। বিক্রয় ট্র্যাকিং, পণ্য গ্রহণ, কাস্টমার ম্যানেজমেন্ট এবং রিপোর্টিং ফিচার রয়েছে।",
+    //   image: "/project1.png",
+    //   technology: "ReactJS, NodeJS, ExpressJS, MongoDB",
+    //   client: "https://github.com/safayet404/parul-fabrics-ltd",
+    //   server: "https://github.com/safayet404/parul-fabrics-ltd-backend",
+    //   live: "",
+    // },
     {
       name: "Local Luminaries",
       name_bn: "লোকাল লুমিনারিজ",
