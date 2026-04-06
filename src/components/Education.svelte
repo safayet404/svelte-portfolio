@@ -5,10 +5,10 @@
     let activeTab = "education";
 
     $: tabs = [
-        { id: "education", label: $locale === "bn" ? "শিক্ষা" : "Education" },
+        { id: "education", label: $locale === "bn" ? "এডুকেশন" : "Education" },
         {
             id: "skill",
-            label: $locale === "bn" ? "পেশাগত দক্ষতা" : "Professional Skill",
+            label: $locale === "bn" ? "প্রফেশনাল স্কিল" : "Professional Skill",
         },
     ];
 
@@ -261,24 +261,89 @@
             </div>
         </div>
     {:else if activeTab === "skill"}
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 transition:fade">
-                {#each professional as { tech, value }, index}
-                    <div
-                        class="flex flex-col"
-                        data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-                    >
-                        <h3 class="text-[#FF014F] font-semibold text-base mb-1">
-                            {tech}
-                        </h3>
-                        <progress
-                            class="w-full h-2 rounded-md overflow-hidden text-[#0064BA]"
-                            {value}
-                            max="100"
-                        ></progress>
-                    </div>
-                {/each}
+        <div
+            data-aos="fade-down"
+            class="relative bg-[#050014] overflow-hidden mt-5"
+        >
+            <!-- Ambient background effects -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div
+                    class="absolute top-0 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl -translate-y-1/2"
+                ></div>
+                <div
+                    class="absolute bottom-0 left-1/4 w-64 h-64 bg-orange-500/8 rounded-full blur-2xl translate-y-1/2"
+                ></div>
+                <div
+                    class="absolute inset-0 opacity-[0.03]"
+                    style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 40px 40px;"
+                ></div>
             </div>
+
+            <!-- Top border accent -->
+            <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent"
+            ></div>
+
+            <div class="container mx-auto px-6 py-8 lg:py-10 relative z-10">
+                <!-- Label tag -->
+                <span
+                    class="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-red-400/80 bg-red-500/10 border border-red-500/20 rounded-full px-2.5 py-1 w-fit mb-6"
+                >
+                    <span
+                        class="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse"
+                    ></span>
+                    {$locale === "bn" ? "পেশাগত দক্ষতা" : "Professional Skills"}
+                </span>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {#each professional as { tech, value }, index}
+                        <div
+                            class="relative group border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm rounded-xl p-4 hover:border-red-500/20 transition-all duration-300"
+                            data-aos={index % 2 === 0
+                                ? "fade-right"
+                                : "fade-left"}
+                            data-aos-delay={index * 50}
+                        >
+                            <!-- Shimmer top line -->
+                            <div
+                                class="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+                            ></div>
+
+                            <div class="flex justify-between items-center mb-3">
+                                <h3
+                                    class="text-white font-semibold text-sm tracking-wide"
+                                >
+                                    {tech}
+                                </h3>
+                                <span
+                                    class="text-red-400 font-bold text-sm tabular-nums"
+                                    >{value}%</span
+                                >
+                            </div>
+
+                            <!-- Progress track -->
+                            <div
+                                class="h-1.5 bg-white/[0.06] rounded-full overflow-hidden"
+                            >
+                                <div
+                                    class="h-full rounded-full bg-gradient-to-r from-red-700 via-red-500 to-red-400 relative"
+                                    style="width: {value}%;"
+                                >
+                                    <!-- Shimmer sweep -->
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- Bottom border accent -->
+            <div
+                class="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"
+            ></div>
         </div>
     {/if}
 </div>
