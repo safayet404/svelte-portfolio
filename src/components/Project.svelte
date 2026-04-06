@@ -175,7 +175,7 @@
               target="_blank"
               rel="noopener noreferrer"
               class="border font-semibold px-7 py-2 rounded-md text-white text-sm"
-              >Live</a
+              >{t.project_live}</a
             >
           {/if}
         </div>
