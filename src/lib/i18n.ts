@@ -10,6 +10,7 @@ export const translations: any = {
         "nav_education": "Experience",
         "nav_contact": "Contact",
         "nav_resume": "Resume",
+        "nav_blog": "Blog",
 
         "hero_welcome": "WELCOME TO MY WORLD",
         "hero_intro": "Hi, I'm",
@@ -38,7 +39,11 @@ export const translations: any = {
         "project_title": "Projects",
         "project_client": "Client Code",
         "project_server": "Server Code",
-        "project_live": "Live Site"
+        "project_live": "Live Site",
+
+        "blog_title": "Blog",
+        "blog_view_all": "View all",
+        "blog_read_more": "Read more"
     },
     bn: {
         "nav_home": "হোম",
@@ -47,6 +52,7 @@ export const translations: any = {
         "nav_education": "যোগ্যতা",
         "nav_contact": "যোগাযোগ",
         "nav_resume": "রিজিউমি",
+        "nav_blog": "ব্লগ",
 
         "hero_welcome": "আমার ডিজিটাল দুনিয়ায় স্বাগতম",
         "hero_intro": "হ্যালো, আমি",
@@ -75,7 +81,11 @@ export const translations: any = {
         "project_title": "প্রজেক্টসমূহ",
         "project_client": "ক্লায়েন্ট কোড",
         "project_server": "সার্ভার কোড",
-        "project_live": "লাইভ সাইট"
+        "project_live": "লাইভ সাইট",
+
+        "blog_title": "ব্লগ",
+        "blog_view_all": "সব দেখুন",
+        "blog_read_more": "পড়ুন"
     }
 };
 export function initLocale() {

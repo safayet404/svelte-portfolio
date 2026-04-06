@@ -2,7 +2,6 @@
   import { initLocale, locale, translations } from "$lib/i18n";
   import { onMount } from "svelte";
   import { fly } from "svelte/transition";
-  import { get } from "svelte/store";
 
   let isMenuOpen = false;
 
@@ -91,6 +90,11 @@
           >
             {t.nav_education}
           </button>
+        </li>
+        <li>
+          <a href="/blog" class="nav-link">
+            {t.nav_blog}
+          </a>
         </li>
 
         <li>

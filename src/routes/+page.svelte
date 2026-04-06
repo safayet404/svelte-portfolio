@@ -1,10 +1,10 @@
 <script>
   import HeroSection from "../components/HeroSection.svelte";
-
   import Contact from "../components/Contact.svelte";
   import KnowMe from "../components/KnowMe.svelte";
   import Project from "../components/Project.svelte";
   import Education from "../components/Education.svelte";
+  import Blog from "../components/Blog.svelte";
   import { Toaster } from "svelte-french-toast";
 </script>
 
@@ -24,6 +24,10 @@
 
   <section id="projects">
     <Project />
+  </section>
+
+  <section id="blog">
+    <Blog />
   </section>
 
   <section id="contact">
