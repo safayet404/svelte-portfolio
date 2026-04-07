@@ -10,11 +10,14 @@
     $: latest = blogs.slice(0, 3);
 
     function formatDate(dateStr: string) {
-        return new Date(dateStr).toLocaleDateString($locale === "bn" ? "bn-BD" : "en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-        });
+        return new Date(dateStr).toLocaleDateString(
+            $locale === "bn" ? "bn-BD" : "en-US",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            },
+        );
     }
 </script>
 
@@ -95,13 +98,19 @@
                     </h2>
 
                     <!-- Excerpt -->
-                    <p class="text-gray-400 text-sm leading-relaxed line-clamp-2 flex-1">
+                    <p
+                        class="text-gray-400 text-sm leading-relaxed line-clamp-2 flex-1"
+                    >
                         {$locale === "bn" ? blog.excerpt_bn : blog.excerpt}
                     </p>
 
                     <!-- Date + Read more -->
-                    <div class="flex items-center justify-between mt-auto pt-2 border-t border-white/[0.07]">
-                        <span class="text-xs text-white/40">{formatDate(blog.date)}</span>
+                    <div
+                        class="flex items-center justify-between mt-auto pt-2 border-t border-white/[0.07]"
+                    >
+                        <span class="text-xs text-white/40"
+                            >{formatDate(blog.date)}</span
+                        >
                         <span class="text-xs text-[#FF014F] font-semibold"
                             >{t.blog_read_more} →</span
                         >
