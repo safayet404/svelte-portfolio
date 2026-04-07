@@ -1,13 +1,21 @@
 <script lang="ts">
     import { locale } from "$lib/i18n";
     import { initLocale } from "$lib/i18n";
-    import { blogs } from "$lib/blogs";
-    import { page } from "$app/stores";
     import { onMount } from "svelte";
+    import type { PageData } from "./$types";
 
+    export let data: PageData;
     onMount(() => initLocale());
 
-    $: blog = blogs.find((b) => b.slug === $page.params.slug);
+    $: blog = data.blog;
+
+    let copied = false;
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            copied = true;
+            setTimeout(() => (copied = false), 2000);
+        });
+    }
 
     function formatDate(dateStr: string) {
         return new Date(dateStr).toLocaleDateString(
@@ -22,13 +30,67 @@
 </script>
 
 <svelte:head>
-    <title
-        >{blog ? ($locale === "bn" ? blog.title_bn : blog.title) : "Blog"} — Safayet</title
-    >
+    {#if blog}
+        {@const title = ($locale === "bn" ? blog.title_bn : blog.title) + " — Safayet"}
+        {@const description = $locale === "bn" ? (blog.excerpt_bn || blog.excerpt || "") : (blog.excerpt || "")}
+        {@const canonicalUrl = `https://safayet.me/blog/${blog.slug}`}
+        {@const imageUrl = blog.cover || "https://safayet.me/og-default.png"}
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:site_name" content="Safayet's Blog" />
+        <meta property="article:published_time" content={blog.date} />
+        {#each blog.tags as tag}
+            <meta property="article:tag" content={tag} />
+        {/each}
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+
+        <!-- JSON-LD Structured Data -->
+        {@html `<script type="application/ld+json">${JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": blog.title,
+            "description": blog.excerpt || "",
+            "image": blog.cover || "",
+            "datePublished": blog.date,
+            "dateModified": blog.updated_at || blog.date,
+            "author": {
+                "@type": "Person",
+                "name": "Safayet",
+                "url": "https://safayet.me"
+            },
+            "publisher": {
+                "@type": "Person",
+                "name": "Safayet",
+                "url": "https://safayet.me"
+            },
+            "url": canonicalUrl,
+            "keywords": blog.tags?.join(", ") || "",
+            "inLanguage": "en"
+        })}<\/script>`}
+    {:else}
+        <title>Blog — Safayet</title>
+        <meta name="robots" content="noindex" />
+    {/if}
 </svelte:head>
 
-<div class="min-h-screen bg-[#050014]">
+<div class="min-h-screen">
     {#if blog}
+        <!-- SSR guaranteed by +page.server.ts —— blog is always defined here -->
         <!-- Hero -->
         <div
             class="relative overflow-hidden py-20 border-b border-white/[0.07]"
@@ -66,9 +128,48 @@
                     {$locale === "bn" ? blog.title_bn : blog.title}
                 </h1>
 
-                <p class="text-white/40 mt-4 text-sm">
-                    {formatDate(blog.date)}
-                </p>
+                <div class="flex items-center gap-4 mt-4">
+                    <p class="text-white/40 text-sm">{formatDate(blog.date)}</p>
+                    <button
+                        on:click={copyLink}
+                        class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all duration-200
+                               {copied
+                            ? 'border-green-500/40 text-green-400 bg-green-500/10'
+                            : 'border-white/10 text-white/40 hover:text-white hover:border-white/20'}"
+                    >
+                        {#if copied}
+                            <svg
+                                class="w-3.5 h-3.5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7"
+                                />
+                            </svg>
+                            Copied!
+                        {:else}
+                            <svg
+                                class="w-3.5 h-3.5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                                />
+                            </svg>
+                            Copy Link
+                        {/if}
+                    </button>
+                </div>
 
                 {#if blog.cover}
                     <div class="mt-8 rounded-xl overflow-hidden h-64 md:h-80">
@@ -84,14 +185,7 @@
 
         <!-- Content -->
         <div class="container mx-auto px-6 py-14 max-w-3xl">
-            <div
-                class="prose prose-invert prose-red max-w-none
-                prose-headings:text-white prose-headings:font-bold
-                prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-3 prose-h2:text-[#FF014F]
-                prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
-                prose-li:text-gray-300 prose-ul:pl-5 prose-ul:list-disc
-                prose-strong:text-white prose-code:text-[#FF014F] prose-code:bg-white/5 prose-code:px-1 prose-code:rounded"
-            >
+            <div class="blog-content">
                 {@html $locale === "bn" ? blog.content_bn : blog.content}
             </div>
 
@@ -105,18 +199,113 @@
                 </a>
             </div>
         </div>
-    {:else}
-        <div class="container mx-auto px-6 py-32 text-center">
-            <p class="text-white/40 text-lg">
-                {$locale === "bn"
-                    ? "ব্লগটি পাওয়া যায়নি।"
-                    : "Blog post not found."}
-            </p>
-            <a
-                href="/blog"
-                class="mt-4 inline-block text-[#FF014F] hover:underline"
-                >{$locale === "bn" ? "সব ব্লগ দেখুন" : "View all posts"}</a
-            >
-        </div>
     {/if}
 </div>
+
+<style>
+    :global(.blog-content) {
+        color: #d1d5db;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+    :global(.blog-content p) {
+        margin-bottom: 1.25rem;
+    }
+    :global(.blog-content h1) {
+        font-size: 1.875rem;
+        font-weight: 800;
+        color: #ff014f !important;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid rgba(255, 1, 79, 0.15);
+    }
+    :global(.blog-content h2) {
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: #ff014f !important;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid rgba(255, 1, 79, 0.15);
+    }
+    :global(.blog-content h3) {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #ff014f !important;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    :global(.blog-content ul) {
+        list-style: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    :global(.blog-content ol) {
+        list-style: decimal;
+        padding-left: 1.5rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    :global(.blog-content li) {
+        color: #d1d5db;
+    }
+    :global(.blog-content strong) {
+        color: #ffffff;
+        font-weight: 700;
+    }
+    :global(.blog-content h1 strong),
+    :global(.blog-content h2 strong),
+    :global(.blog-content h3 strong) {
+        color: inherit;
+    }
+    :global(.blog-content em) {
+        color: #e5e7eb;
+        font-style: italic;
+    }
+    :global(.blog-content code) {
+        background: rgba(255, 255, 255, 0.07);
+        color: #ff014f;
+        padding: 0.15rem 0.4rem;
+        border-radius: 0.25rem;
+        font-size: 0.875em;
+        font-family: monospace;
+    }
+    :global(.blog-content pre) {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+    }
+    :global(.blog-content blockquote) {
+        border-left: 3px solid rgba(255, 1, 79, 0.5);
+        padding-left: 1rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-style: italic;
+        margin: 1.5rem 0;
+    }
+    :global(.blog-content a) {
+        color: #ff014f;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+    :global(.blog-content a:hover) {
+        color: #ff3370;
+    }
+    :global(.blog-content hr) {
+        border-color: rgba(255, 255, 255, 0.08);
+        margin: 2rem 0;
+    }
+    :global(.blog-content img) {
+        border-radius: 0.75rem;
+        width: 100%;
+        margin: 1.5rem 0;
+    }
+</style>

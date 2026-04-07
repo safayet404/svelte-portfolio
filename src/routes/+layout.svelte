@@ -7,7 +7,7 @@
 </script>
 
 <!-- Navbar -->
-<div class="flex flex-col transition-container bg-[#1D232A]">
+<div class="flex flex-col transition-container">
   <Navbar />
 
   <main class="flex-grow" transition:fade={{ duration: 500 }}>
