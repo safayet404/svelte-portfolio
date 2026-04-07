@@ -1,12 +1,12 @@
 <script lang="ts">
     import { locale, translations } from "$lib/i18n";
-    import { blogs } from "$lib/blogs";
+    import type { Blog } from "$lib/blogs";
     import { initAOS } from "../aos";
+
+    export let blogs: Blog[] = [];
 
     initAOS();
     $: t = translations[$locale];
-
-    // Show latest 3 on homepage
     $: latest = blogs.slice(0, 3);
 
     function formatDate(dateStr: string) {

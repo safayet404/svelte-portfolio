@@ -1,13 +1,13 @@
 <script lang="ts">
     import { locale } from "$lib/i18n";
     import { initLocale } from "$lib/i18n";
-    import { blogs } from "$lib/blogs";
-    import { page } from "$app/stores";
     import { onMount } from "svelte";
+    import type { PageData } from './$types';
 
+    export let data: PageData;
     onMount(() => initLocale());
 
-    $: blog = blogs.find((b) => b.slug === $page.params.slug);
+    $: blog = data.blog;
 
     function formatDate(dateStr: string) {
         return new Date(dateStr).toLocaleDateString(
@@ -29,6 +29,7 @@
 
 <div class="min-h-screen bg-[#050014]">
     {#if blog}
+    <!-- SSR guaranteed by +page.server.ts —— blog is always defined here -->
         <!-- Hero -->
         <div
             class="relative overflow-hidden py-20 border-b border-white/[0.07]"
@@ -104,19 +105,6 @@
                     ← {$locale === "bn" ? "সব ব্লগ দেখুন" : "View all posts"}
                 </a>
             </div>
-        </div>
-    {:else}
-        <div class="container mx-auto px-6 py-32 text-center">
-            <p class="text-white/40 text-lg">
-                {$locale === "bn"
-                    ? "ব্লগটি পাওয়া যায়নি।"
-                    : "Blog post not found."}
-            </p>
-            <a
-                href="/blog"
-                class="mt-4 inline-block text-[#FF014F] hover:underline"
-                >{$locale === "bn" ? "সব ব্লগ দেখুন" : "View all posts"}</a
-            >
         </div>
     {/if}
 </div>

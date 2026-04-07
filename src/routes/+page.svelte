@@ -6,6 +6,8 @@
   import Education from "../components/Education.svelte";
   import Blog from "../components/Blog.svelte";
   import { Toaster } from "svelte-french-toast";
+
+  export let data;
 </script>
 
 <Toaster />
@@ -27,7 +29,7 @@
   </section>
 
   <section id="blog">
-    <Blog />
+    <Blog blogs={data.latestBlogs ?? []} />
   </section>
 
   <section id="contact">

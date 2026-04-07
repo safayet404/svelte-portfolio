@@ -1,12 +1,13 @@
 <script lang="ts">
-    import { locale, translations } from "$lib/i18n";
-    import { blogs } from "$lib/blogs";
+    import { locale } from "$lib/i18n";
     import { initLocale } from "$lib/i18n";
     import { onMount } from "svelte";
+    import type { PageData } from './$types';
+    export let data: PageData;
 
     onMount(() => initLocale());
 
-    $: t = translations[$locale];
+    $: blogs = data.blogs ?? [];
 
     function formatDate(dateStr: string) {
         return new Date(dateStr).toLocaleDateString($locale === "bn" ? "bn-BD" : "en-US", {
