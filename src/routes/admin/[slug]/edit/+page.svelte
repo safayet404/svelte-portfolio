@@ -4,9 +4,10 @@
     export let data: PageData;
     export let form: ActionData;
 
-    $: blog = data.blog;
-    let contentEn = blog?.content ?? '';
-    let contentBn = blog?.content_bn ?? '';
+    // Use const so blog is available immediately when contentEn/contentBn are initialized
+    const blog = data.blog;
+    let contentEn = data.blog?.content ?? '';
+    let contentBn = data.blog?.content_bn ?? '';
     let activeTab: 'en' | 'bn' = 'en';
     let loading = false;
     let showDeleteConfirm = false;
@@ -110,24 +111,29 @@
                     </a>
                 </div>
 
-                <!-- Delete -->
+                <!-- Delete trigger -->
                 {#if !showDeleteConfirm}
                     <button type="button" on:click={() => showDeleteConfirm = true}
                         class="text-sm text-red-400/60 hover:text-red-400 transition-colors">
                         Delete post
                     </button>
                 {:else}
-                    <form method="POST" action="?/delete" class="flex items-center gap-2">
+                    <div class="flex items-center gap-2">
                         <span class="text-sm text-white/40">Are you sure?</span>
-                        <button type="submit" class="text-sm text-red-400 border border-red-400/30 px-3 py-1.5 rounded-lg hover:bg-red-400/10 transition-colors">
+                        <!-- form="delete-form" targets the separate form below via HTML5 form association -->
+                        <button type="submit" form="delete-form"
+                            class="text-sm text-red-400 border border-red-400/30 px-3 py-1.5 rounded-lg hover:bg-red-400/10 transition-colors">
                             Yes, delete
                         </button>
                         <button type="button" on:click={() => showDeleteConfirm = false}
                             class="text-sm text-white/30 hover:text-white transition-colors">Cancel</button>
-                    </form>
+                    </div>
                 {/if}
             </div>
         </form>
+
+        <!-- Delete form lives OUTSIDE the update form to avoid nesting -->
+        <form id="delete-form" method="POST" action="?/delete" class="hidden"></form>
     </main>
 </div>
 
