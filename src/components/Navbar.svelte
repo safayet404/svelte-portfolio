@@ -30,24 +30,25 @@
   onMount(() => initLocale());
 </script>
 
-<div class="sticky top-0 left-0 right-0 z-50 bg-[#0d0d18]/70 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_30px_rgba(0,0,0,0.5)]">
+<div
+  class="sticky top-0 left-0 right-0 z-50 border-b border-[#323941] backdrop-blur-md"
+>
   <div class="container mx-auto flex justify-between items-center px-4 py-3">
-
     <!-- Logo -->
-    <button type="button" on:click={() => handleNav("home")} class="flex-shrink-0">
+    <button
+      type="button"
+      on:click={() => handleNav("home")}
+      class="flex-shrink-0"
+    >
       <img src="/logo.png" class="w-28 h-20 object-contain" alt="Logo" />
     </button>
 
     <!-- Desktop nav -->
     <div class="hidden lg:flex items-center gap-1">
-      <ul class="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide">
-        {#each [
-          { label: t.nav_home,      id: "home" },
-          { label: t.nav_about,     id: "about" },
-          { label: t.nav_project,   id: "projects" },
-          { label: t.nav_education, id: "education" },
-          { label: t.nav_contact,   id: "contact" },
-        ] as item}
+      <ul
+        class="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide"
+      >
+        {#each [{ label: t.nav_home, id: "home" }, { label: t.nav_about, id: "about" }, { label: t.nav_project, id: "projects" }, { label: t.nav_education, id: "education" }, { label: t.nav_contact, id: "contact" }] as item}
           <li>
             <button
               type="button"
@@ -55,7 +56,9 @@
               class="relative px-3 py-2 rounded-lg text-white/60 hover:text-white transition-colors duration-200 hover:bg-white/[0.06] group"
             >
               {item.label}
-              <span class="absolute bottom-1 left-3 right-3 h-px bg-[#FF014F] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full"></span>
+              <span
+                class="absolute bottom-1 left-3 right-3 h-px bg-[#FF014F] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full"
+              ></span>
             </button>
           </li>
         {/each}
@@ -64,10 +67,16 @@
         <li>
           <a
             href="/blog"
-            class="relative px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-white/[0.06] group {isBlog ? 'text-[#FF014F]' : 'text-white/60 hover:text-white'}"
+            class="relative px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-white/[0.06] group {isBlog
+              ? 'text-[#FF014F]'
+              : 'text-white/60 hover:text-white'}"
           >
             {t.nav_blog}
-            <span class="absolute bottom-1 left-3 right-3 h-px bg-[#FF014F] transition-transform duration-200 origin-left rounded-full {isBlog ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}"></span>
+            <span
+              class="absolute bottom-1 left-3 right-3 h-px bg-[#FF014F] transition-transform duration-200 origin-left rounded-full {isBlog
+                ? 'scale-x-100'
+                : 'scale-x-0 group-hover:scale-x-100'}"
+            ></span>
           </a>
         </li>
       </ul>
@@ -94,13 +103,25 @@
 
     <!-- Mobile hamburger -->
     <button
-      on:click={() => isMenuOpen = !isMenuOpen}
+      on:click={() => (isMenuOpen = !isMenuOpen)}
       class="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/5 transition-colors"
       aria-label="Toggle menu"
     >
-      <span class="w-5 h-0.5 bg-white/70 rounded-full transition-all duration-300 {isMenuOpen ? 'rotate-45 translate-y-2' : ''}"></span>
-      <span class="w-5 h-0.5 bg-white/70 rounded-full transition-all duration-300 {isMenuOpen ? 'opacity-0' : ''}"></span>
-      <span class="w-5 h-0.5 bg-white/70 rounded-full transition-all duration-300 {isMenuOpen ? '-rotate-45 -translate-y-2' : ''}"></span>
+      <span
+        class="w-5 h-0.5 bg-white/70 rounded-full transition-all duration-300 {isMenuOpen
+          ? 'rotate-45 translate-y-2'
+          : ''}"
+      ></span>
+      <span
+        class="w-5 h-0.5 bg-white/70 rounded-full transition-all duration-300 {isMenuOpen
+          ? 'opacity-0'
+          : ''}"
+      ></span>
+      <span
+        class="w-5 h-0.5 bg-white/70 rounded-full transition-all duration-300 {isMenuOpen
+          ? '-rotate-45 -translate-y-2'
+          : ''}"
+      ></span>
     </button>
   </div>
 
@@ -111,13 +132,7 @@
       class="lg:hidden border-t border-white/[0.06] bg-[#0d0d18]/95 backdrop-blur-xl px-4 py-4"
     >
       <ul class="space-y-1 text-sm font-semibold uppercase tracking-wide">
-        {#each [
-          { label: t.nav_home,      id: "home" },
-          { label: t.nav_about,     id: "about" },
-          { label: t.nav_project,   id: "projects" },
-          { label: t.nav_education, id: "education" },
-          { label: t.nav_contact,   id: "contact" },
-        ] as item}
+        {#each [{ label: t.nav_home, id: "home" }, { label: t.nav_about, id: "about" }, { label: t.nav_project, id: "projects" }, { label: t.nav_education, id: "education" }, { label: t.nav_contact, id: "contact" }] as item}
           <li>
             <button
               on:click={() => handleNav(item.id)}
@@ -128,20 +143,32 @@
           </li>
         {/each}
         <li>
-          <a href="/blog" on:click={() => isMenuOpen = false}
-            class="block px-4 py-2.5 rounded-lg transition-colors {isBlog ? 'text-[#FF014F] bg-[#FF014F]/5' : 'text-white/60 hover:text-white hover:bg-white/[0.06]'}">
+          <a
+            href="/blog"
+            on:click={() => (isMenuOpen = false)}
+            class="block px-4 py-2.5 rounded-lg transition-colors {isBlog
+              ? 'text-[#FF014F] bg-[#FF014F]/5'
+              : 'text-white/60 hover:text-white hover:bg-white/[0.06]'}"
+          >
             {t.nav_blog}
           </a>
         </li>
       </ul>
 
-      <div class="mt-3 pt-3 border-t border-white/[0.06] flex items-center gap-3">
-        <a href="/resume.pdf" download
-          class="flex-1 text-center py-2.5 rounded-lg text-sm font-bold text-[#FF014F] border border-[#FF014F]/30 hover:bg-[#FF014F] hover:text-white transition-all">
+      <div
+        class="mt-3 pt-3 border-t border-white/[0.06] flex items-center gap-3"
+      >
+        <a
+          href="/resume.pdf"
+          download
+          class="flex-1 text-center py-2.5 rounded-lg text-sm font-bold text-[#FF014F] border border-[#FF014F]/30 hover:bg-[#FF014F] hover:text-white transition-all"
+        >
           {t.nav_resume}
         </a>
-        <button on:click={toggleLanguage}
-          class="px-4 py-2.5 rounded-lg text-xs font-black border border-white/10 text-white/50 hover:text-white transition-all">
+        <button
+          on:click={toggleLanguage}
+          class="px-4 py-2.5 rounded-lg text-xs font-black border border-white/10 text-white/50 hover:text-white transition-all"
+        >
           {$locale === "en" ? "বাং" : "EN"}
         </button>
       </div>
