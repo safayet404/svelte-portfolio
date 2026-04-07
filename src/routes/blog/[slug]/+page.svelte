@@ -30,9 +30,62 @@
 </script>
 
 <svelte:head>
-    <title
-        >{blog ? ($locale === "bn" ? blog.title_bn : blog.title) : "Blog"} — Safayet</title
-    >
+    {#if blog}
+        {@const title = ($locale === "bn" ? blog.title_bn : blog.title) + " — Safayet"}
+        {@const description = $locale === "bn" ? (blog.excerpt_bn || blog.excerpt || "") : (blog.excerpt || "")}
+        {@const canonicalUrl = `https://safayet.me/blog/${blog.slug}`}
+        {@const imageUrl = blog.cover || "https://safayet.me/og-default.png"}
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:site_name" content="Safayet's Blog" />
+        <meta property="article:published_time" content={blog.date} />
+        {#each blog.tags as tag}
+            <meta property="article:tag" content={tag} />
+        {/each}
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={imageUrl} />
+
+        <!-- JSON-LD Structured Data -->
+        {@html `<script type="application/ld+json">${JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": blog.title,
+            "description": blog.excerpt || "",
+            "image": blog.cover || "",
+            "datePublished": blog.date,
+            "dateModified": blog.updated_at || blog.date,
+            "author": {
+                "@type": "Person",
+                "name": "Safayet",
+                "url": "https://safayet.me"
+            },
+            "publisher": {
+                "@type": "Person",
+                "name": "Safayet",
+                "url": "https://safayet.me"
+            },
+            "url": canonicalUrl,
+            "keywords": blog.tags?.join(", ") || "",
+            "inLanguage": "en"
+        })}<\/script>`}
+    {:else}
+        <title>Blog — Safayet</title>
+        <meta name="robots" content="noindex" />
+    {/if}
 </svelte:head>
 
 <div class="min-h-screen">

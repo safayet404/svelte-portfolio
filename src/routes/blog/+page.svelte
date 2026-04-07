@@ -20,6 +20,13 @@
 
 <svelte:head>
     <title>Blog — Safayet</title>
+    <meta name="description" content="Read Safayet's blog posts about web development, Linux, system internals, and software engineering." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://safayet.me/blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Blog — Safayet" />
+    <meta property="og:description" content="Read Safayet's blog posts about web development, Linux, system internals, and software engineering." />
+    <meta property="og:url" content="https://safayet.me/blog" />
 </svelte:head>
 
 <div class="min-h-screen bg-[#050014]">
