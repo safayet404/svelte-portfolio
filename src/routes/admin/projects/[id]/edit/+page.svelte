@@ -140,11 +140,9 @@
             </div>
 
             <div class="flex justify-between pt-4 border-t border-white/[0.06]">
-                <!-- Delete -->
-                <form id="delete-form" method="POST" action="?/delete" use:enhance></form>
                 <button type="submit" form="delete-form"
                     class="px-6 py-2.5 rounded-xl text-red-400 border border-red-500/20 hover:bg-red-500/10 text-sm font-semibold transition-colors"
-                    onclick="return confirm('Delete this project? This cannot be undone.')">
+                    on:click={(e) => { if (!confirm('Delete this project? This cannot be undone.')) e.preventDefault(); }}>
                     Delete Project
                 </button>
 
@@ -154,6 +152,9 @@
                 </button>
             </div>
         </form>
+
+        <!-- Delete form must be outside the update form -->
+        <form id="delete-form" method="POST" action="?/delete" use:enhance></form>
     </main>
 </div>
 

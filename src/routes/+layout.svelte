@@ -24,6 +24,6 @@
   /* Custom styles for your transition */
   .transition-container {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
   }
 </style>
