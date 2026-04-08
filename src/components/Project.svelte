@@ -15,7 +15,8 @@
     tech_stack: string[];
     role: string;
     status: string;
-    github_url: string;
+    github_client_url: string;
+    github_server_url: string;
     live_url: string;
     featured: boolean;
   }> = [];
@@ -60,13 +61,22 @@
         </p>
 
         <div class="mt-10 flex gap-5 flex-wrap">
-          {#if project.github_url}
+          {#if project.github_client_url}
             <a
-              href={project.github_url}
+              href={project.github_client_url}
               target="_blank"
               rel="noopener noreferrer"
               class="border font-semibold px-7 py-2 rounded-md text-white text-sm"
               >{t.project_client}</a
+            >
+          {/if}
+          {#if project.github_server_url}
+            <a
+              href={project.github_server_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border font-semibold px-7 py-2 rounded-md text-white text-sm"
+              >{t.project_server}</a
             >
           {/if}
           {#if project.live_url}

@@ -100,14 +100,23 @@
                     </select>
                 </div>
                 <div>
-                    <label class="field-label">GitHub URL</label>
-                    <input type="url" name="github_url" value={project.github_url}
-                        class="field-input" />
-                </div>
-                <div>
                     <label class="field-label">Live URL</label>
                     <input type="url" name="live_url" value={project.live_url}
                         class="field-input" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="field-label">GitHub (Frontend/Client)</label>
+                    <input type="url" name="github_client_url" value={project.github_client_url}
+                        class="field-input" />
+                </div>
+                <div>
+                    <label class="field-label">GitHub (Backend/Server)</label>
+                    <input type="url" name="github_server_url" value={project.github_server_url}
+                        class="field-input" />
+                    <p class="text-white/30 text-xs mt-1">Leave empty if no backend repo</p>
                 </div>
             </div>
 

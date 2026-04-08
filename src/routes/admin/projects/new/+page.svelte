@@ -89,7 +89,21 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="field-label">GitHub (Frontend/Client)</label>
+                    <input type="url" name="github_client_url" placeholder="https://github.com/.../frontend"
+                        class="field-input" />
+                </div>
+                <div>
+                    <label class="field-label">GitHub (Backend/Server)</label>
+                    <input type="url" name="github_server_url" placeholder="https://github.com/.../backend"
+                        class="field-input" />
+                    <p class="text-white/30 text-xs mt-1">Leave empty if no backend repo</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="field-label">Status</label>
                     <select name="status" class="field-input">
@@ -97,11 +111,6 @@
                         <option value="in-progress">In Progress</option>
                         <option value="archived">Archived</option>
                     </select>
-                </div>
-                <div>
-                    <label class="field-label">GitHub URL</label>
-                    <input type="url" name="github_url" placeholder="https://github.com/..."
-                        class="field-input" />
                 </div>
                 <div>
                     <label class="field-label">Live URL</label>

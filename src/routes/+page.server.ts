@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
             .limit(3),
         db
             .from('projects')
-            .select('id, title, title_bn, description, description_bn, cover_image, tech_stack, role, status, github_url, live_url, featured')
+            .select('id, title, title_bn, description, description_bn, cover_image, tech_stack, role, status, github_client_url, github_server_url, live_url, featured')
             .eq('visible', true)
             .order('display_order', { ascending: true }),
     ]);
