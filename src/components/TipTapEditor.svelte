@@ -88,10 +88,10 @@
     const headingLevels: Array<1 | 2 | 3> = [1, 2, 3];
 </script>
 
-<div class="border border-white/10 rounded-xl overflow-hidden bg-[#1D232A]">
+<div class="border border-white/10 rounded-xl overflow-hidden bg-[#1D232A] flex flex-col" style="max-height: 600px;">
     <!-- Toolbar -->
     <div
-        class="flex flex-wrap items-center gap-1 p-2 border-b border-white/10 bg-white/[0.03]"
+        class="flex-shrink-0 flex flex-wrap items-center gap-1 p-2 border-b border-white/10 bg-[#1D232A] z-10"
     >
         <!-- History -->
         <button
@@ -222,7 +222,7 @@
     <!-- Link input -->
     {#if showLinkInput}
         <div
-            class="flex items-center gap-2 p-2 border-b border-white/10 bg-white/[0.02]"
+            class="flex-shrink-0 flex items-center gap-2 p-2 border-b border-white/10 bg-white/[0.02]"
         >
             <input
                 bind:value={linkUrl}
@@ -247,7 +247,7 @@
     <!-- Image input -->
     {#if showImageInput}
         <div
-            class="flex items-center gap-2 p-2 border-b border-white/10 bg-white/[0.02]"
+            class="flex-shrink-0 flex items-center gap-2 p-2 border-b border-white/10 bg-white/[0.02]"
         >
             <input
                 bind:value={imageUrl}
@@ -270,7 +270,7 @@
     {/if}
 
     <!-- Editor area -->
-    <div bind:this={element} class="p-5 min-h-[300px]"></div>
+    <div bind:this={element} class="p-5 min-h-[300px] flex-1 overflow-y-auto"></div>
 </div>
 
 <style>
