@@ -27,6 +27,12 @@
                     + New Post
                 </a>
                 <a
+                    href="/admin/projects"
+                    class="px-4 py-2 rounded-lg border border-white/10 text-white text-sm font-semibold hover:border-white/20 transition-colors"
+                >
+                    Projects
+                </a>
+                <a
                     href="/"
                     class="text-white/40 hover:text-white text-sm transition-colors"
                     >← Site</a

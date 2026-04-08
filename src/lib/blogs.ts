@@ -4,8 +4,8 @@ export type Blog = {
   title_bn: string;
   excerpt: string;
   excerpt_bn: string;
-  content: string;
-  content_bn: string;
+  content?: string;
+  content_bn?: string;
   date: string;
   tags: string[];
   cover: string; // image path in /static or empty string

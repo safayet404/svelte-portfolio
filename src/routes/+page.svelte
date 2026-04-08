@@ -25,7 +25,7 @@
   </section>
 
   <section id="projects">
-    <Project />
+    <Project projects={data.projects ?? []} />
   </section>
 
   <section id="blog">
