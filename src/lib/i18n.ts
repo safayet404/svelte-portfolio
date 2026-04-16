@@ -47,7 +47,7 @@ export const translations: any = {
     },
     bn: {
         "nav_home": "হোম",
-        "nav_about": "পরিচয়",
+        "nav_about": "এবাউট",
         "nav_project": "প্রজেক্টস",
         "nav_education": "এক্সপিরিয়ান্স",
         "nav_contact": "কন্টাক্ট",
