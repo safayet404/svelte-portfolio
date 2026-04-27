@@ -43,7 +43,13 @@ export const translations: any = {
 
         "blog_title": "Blog",
         "blog_view_all": "View all",
-        "blog_read_more": "Read more"
+        "blog_read_more": "Read more",
+
+        "nav_books": "Books",
+        "books_title": "My Books",
+        "books_read": "Read",
+        "books_reading": "Reading",
+        "books_want": "Want to Read"
     },
     bn: {
         "nav_home": "হোম",
@@ -85,7 +91,13 @@ export const translations: any = {
 
         "blog_title": "ব্লগ",
         "blog_view_all": "সব দেখুন",
-        "blog_read_more": "পড়ুন"
+        "blog_read_more": "পড়ুন",
+
+        "nav_books": "বই",
+        "books_title": "বইয়ের তালিকা",
+        "books_read": "পড়া হয়েছে",
+        "books_reading": "পড়ছি",
+        "books_want": "পড়তে চাই"
     }
 };
 export function initLocale() {

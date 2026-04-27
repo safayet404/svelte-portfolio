@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npx svelte-kit *)"
+    ],
+    "additionalDirectories": [
+      "/home/safayet/Barrzen/svelte-portfolio/src/routes/admin/books/[id]"
+    ]
+  }
+}
