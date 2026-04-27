@@ -173,10 +173,10 @@
 
     <!-- Filters -->
     <div class="sticky top-[73px] z-30 bg-[#1D232A]/90 backdrop-blur-xl border-b border-white/[0.06]">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+        <div class="container mx-auto px-6 py-3 flex flex-col gap-2">
 
-                <!-- Search -->
+            <!-- Row 1: Search + Rating + Clear -->
+            <div class="flex gap-3 items-center">
                 <div class="relative flex-1 min-w-0">
                     <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -189,24 +189,8 @@
                     />
                 </div>
 
-                <!-- Genre filter -->
-                <div class="flex gap-1.5 flex-wrap">
-                    {#each genres as genre}
-                        <button
-                            on:click={() => (selectedGenre = genre)}
-                            class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150
-                                {selectedGenre === genre
-                                    ? 'bg-[#FF014F] text-white'
-                                    : 'bg-white/[0.05] text-white/50 hover:text-white hover:bg-white/[0.08] border border-white/10'}"
-                        >
-                            {genre === 'all' ? ($locale === 'bn' ? 'সব' : 'All') : genre}
-                        </button>
-                    {/each}
-                </div>
-
-                <!-- Rating filter -->
-                <div class="flex items-center gap-1.5">
-                    <span class="text-white/30 text-xs">{$locale === 'bn' ? 'রেটিং:' : 'Rating:'}</span>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                    <span class="text-white/30 text-xs mr-0.5">{$locale === 'bn' ? 'রেটিং:' : 'Rating:'}</span>
                     {#each [1, 2, 3, 4, 5] as star}
                         <button
                             on:click={() => (selectedRating = selectedRating === star ? 0 : star)}
@@ -216,7 +200,6 @@
                     {/each}
                 </div>
 
-                <!-- Reset -->
                 {#if hasActiveFilters}
                     <button
                         on:click={resetFilters}
@@ -228,6 +211,21 @@
                         {$locale === 'bn' ? 'ক্লিয়ার' : 'Clear'}
                     </button>
                 {/if}
+            </div>
+
+            <!-- Row 2: Genre pills (horizontally scrollable) -->
+            <div class="flex gap-1.5 overflow-x-auto pb-1 scrollbar-hide">
+                {#each genres as genre}
+                    <button
+                        on:click={() => (selectedGenre = genre)}
+                        class="flex-shrink-0 px-3 py-1 rounded-lg text-xs font-semibold transition-all duration-150
+                            {selectedGenre === genre
+                                ? 'bg-[#FF014F] text-white'
+                                : 'bg-white/[0.05] text-white/50 hover:text-white hover:bg-white/[0.08] border border-white/10'}"
+                    >
+                        {genre === 'all' ? ($locale === 'bn' ? 'সব' : 'All') : genre}
+                    </button>
+                {/each}
             </div>
         </div>
     </div>

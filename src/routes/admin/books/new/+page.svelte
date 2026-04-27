@@ -60,11 +60,11 @@
                     <label class="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2">Status</label>
                     <select
                         name="status"
-                        class="w-full px-4 py-2.5 bg-white/[0.04] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-[#FF014F]/50 transition-colors"
+                        class="w-full px-4 py-2.5 bg-[#1D232A] border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-[#FF014F]/50 transition-colors"
                     >
-                        <option value="want-to-read">Want to Read</option>
-                        <option value="currently-reading">Currently Reading</option>
-                        <option value="read">Read</option>
+                        <option value="want-to-read" class="bg-[#1D232A] text-white">Want to Read</option>
+                        <option value="currently-reading" class="bg-[#1D232A] text-white">Currently Reading</option>
+                        <option value="read" class="bg-[#1D232A] text-white">Read</option>
                     </select>
                 </div>
 
