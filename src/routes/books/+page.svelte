@@ -1,6 +1,7 @@
 <script lang="ts">
     import { locale, initLocale } from '$lib/i18n';
     import { onMount } from 'svelte';
+    import { enhance } from '$app/forms';
     import type { PageData } from './$types';
 
     export let data: PageData;
@@ -284,9 +285,17 @@
                                         {book.title}
                                     </h3>
                                     {#if statusConfig[book.status]}
-                                        <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border {statusConfig[book.status].color}">
-                                            {$locale === 'bn' ? statusConfig[book.status].labelBn : statusConfig[book.status].label}
-                                        </span>
+                                        <form method="POST" action="?/updateStatus" use:enhance class="flex-shrink-0">
+                                            <input type="hidden" name="id" value={book.id} />
+                                            <input type="hidden" name="status" value={book.status} />
+                                            <button
+                                                type="submit"
+                                                title="Click to change status"
+                                                class="text-[10px] font-semibold px-2 py-0.5 rounded-full border cursor-pointer hover:opacity-70 transition-opacity {statusConfig[book.status].color}"
+                                            >
+                                                {$locale === 'bn' ? statusConfig[book.status].labelBn : statusConfig[book.status].label}
+                                            </button>
+                                        </form>
                                     {/if}
                                 </div>
 
