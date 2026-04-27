@@ -12,7 +12,6 @@
   $: t = translations[currentLocale];
   $: isHome = $page.url.pathname === "/";
   $: isBlog = $page.url.pathname.startsWith("/blog");
-  $: isBooks = $page.url.pathname.startsWith("/books");
 
   function handleNav(sectionId: string) {
     isMenuOpen = false;
@@ -81,22 +80,6 @@
           </a>
         </li>
 
-        <!-- Books link -->
-        <li>
-          <a
-            href="/books"
-            class="relative px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-white/[0.06] group {isBooks
-              ? 'text-[#FF014F]'
-              : 'text-white/60 hover:text-white'}"
-          >
-            {t.nav_books}
-            <span
-              class="absolute bottom-1 left-3 right-3 h-px bg-[#FF014F] transition-transform duration-200 origin-left rounded-full {isBooks
-                ? 'scale-x-100'
-                : 'scale-x-0 group-hover:scale-x-100'}"
-            ></span>
-          </a>
-        </li>
       </ul>
 
       <div class="w-px h-5 bg-white/10 mx-2"></div>
@@ -169,17 +152,6 @@
               : 'text-white/60 hover:text-white hover:bg-white/[0.06]'}"
           >
             {t.nav_blog}
-          </a>
-        </li>
-        <li>
-          <a
-            href="/books"
-            on:click={() => (isMenuOpen = false)}
-            class="block px-4 py-2.5 rounded-lg transition-colors {isBooks
-              ? 'text-[#FF014F] bg-[#FF014F]/5'
-              : 'text-white/60 hover:text-white hover:bg-white/[0.06]'}"
-          >
-            {t.nav_books}
           </a>
         </li>
       </ul>
