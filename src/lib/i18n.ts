@@ -101,14 +101,5 @@ export const translations: any = {
     }
 };
 export function initLocale() {
-    if (typeof window !== 'undefined') {
-        // Simple logic: Check browser language or Geolocation API 
-        // Note: For true "Country" detection, you'd usually use a server-side hook with Vercel/Cloudflare headers.
-        const browserLang = navigator.language;
-        if (browserLang.includes('bn') || Intl.DateTimeFormat().resolvedOptions().timeZone === 'Asia/Dhaka') {
-            locale.set('bn');
-        } else {
-            locale.set('en');
-        }
-    }
+    locale.set('en');
 }
