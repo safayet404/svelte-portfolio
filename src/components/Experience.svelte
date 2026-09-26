@@ -8,13 +8,19 @@
             title: "Experience",
             role: "Software Engineer",
             company: "Shabuj Global Education",
-            period: "Jan 2025 – Present",
+            period: "Jan 2026 – Present",
+            promotion: "Promoted from Software QA Engineer (Apr 2025 – Dec 2025)",
             place: "Dhaka, Bangladesh",
             current: "Current",
             duties: [
                 "Build and ship features for the company's internal CRM with Laravel and Vue.js, working directly with the business team to turn requirements into working software.",
                 "Diagnose and fix critical production bugs, improving the platform's stability, performance and user experience.",
                 "Optimize MySQL schemas and Eloquent queries, and take part in code reviews to keep code quality high across the team.",
+            ],
+            previousTitle: "Previously",
+            previous: [
+                { role: "Frontend Developer", company: "Barrzen IT Solution", type: "Freelance", period: "Jan 2025 – Jun 2026", note: "Next.js and Svelte" },
+                { role: "Frontend Developer", company: "Social Micro Finance", type: "Full-time · Remote", period: "Jul 2024 – Dec 2024", note: "" },
             ],
             initiativesTitle: "Key initiatives I proposed and lead",
             proposedLed: "Proposed & led",
@@ -44,13 +50,19 @@
             title: "অভিজ্ঞতা",
             role: "সফটওয়্যার ইঞ্জিনিয়ার",
             company: "সবুজ গ্লোবাল এডুকেশন",
-            period: "জানুয়ারি ২০২৫ – বর্তমান",
+            period: "জানুয়ারি ২০২৬ – বর্তমান",
+            promotion: "সফটওয়্যার QA ইঞ্জিনিয়ার (এপ্রিল ২০২৫ – ডিসেম্বর ২০২৫) থেকে পদোন্নতি",
             place: "ঢাকা, বাংলাদেশ",
             current: "বর্তমান",
             duties: [
                 "Laravel আর Vue.js দিয়ে কোম্পানির ইন্টারনাল CRM-এ নতুন ফিচার তৈরি ও চালু করি। বিজনেস টিমের সাথে সরাসরি কাজ করে তাদের চাহিদাকে কার্যকর সফটওয়্যারে রূপ দিই।",
                 "প্রোডাকশনের জটিল বাগ খুঁজে বের করে ঠিক করি, যাতে প্ল্যাটফর্মের স্থিতিশীলতা, পারফরম্যান্স আর ইউজার এক্সপেরিয়েন্স ভালো হয়।",
                 "MySQL স্কিমা আর Eloquent কুয়েরি অপটিমাইজ করি এবং কোড রিভিউয়ের মাধ্যমে টিমের কোডের মান ধরে রাখি।",
+            ],
+            previousTitle: "আগের অভিজ্ঞতা",
+            previous: [
+                { role: "ফ্রন্টএন্ড ডেভেলপার", company: "Barrzen IT Solution", type: "ফ্রিল্যান্স", period: "জানুয়ারি ২০২৫ – জুন ২০২৬", note: "Next.js ও Svelte" },
+                { role: "ফ্রন্টএন্ড ডেভেলপার", company: "Social Micro Finance", type: "ফুল-টাইম · রিমোট", period: "জুলাই ২০২৪ – ডিসেম্বর ২০২৪", note: "" },
             ],
             initiativesTitle: "আমার প্রস্তাব করা ও নেতৃত্ব দেওয়া উদ্যোগ",
             proposedLed: "প্রস্তাব ও নেতৃত্ব",
@@ -120,6 +132,9 @@
                         <span class="text-white/40 font-medium">·</span>
                         <span class="text-red-500">{c.company}</span>
                     </h2>
+                    <p class="mt-2 text-xs md:text-sm text-white/50">
+                        ↑ {c.promotion}
+                    </p>
                 </div>
                 <div class="text-left md:text-right text-white/50 text-sm">
                     <p class="font-semibold text-white/70">{c.period}</p>
@@ -202,5 +217,31 @@
                 {/each}
             </div>
         </div>
+    </div>
+
+    <!-- Previous roles -->
+    <h3
+        class="mt-10 mb-4 text-xs font-semibold tracking-widest uppercase text-white/50"
+    >
+        {c.previousTitle}
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {#each c.previous as job}
+            <div
+                data-aos="fade-up"
+                class="border border-white/[0.07] bg-white/[0.03] rounded-xl p-5"
+            >
+                <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <h4 class="text-white font-semibold">{job.role}</h4>
+                    <span class="text-xs text-white/50">{job.period}</span>
+                </div>
+                <p class="mt-1 text-sm text-white/60">
+                    {job.company} · {job.type}
+                </p>
+                {#if job.note}
+                    <p class="mt-2 text-xs text-white/40">{job.note}</p>
+                {/if}
+            </div>
+        {/each}
     </div>
 </div>
