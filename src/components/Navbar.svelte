@@ -48,7 +48,7 @@
       <ul
         class="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide"
       >
-        {#each [{ label: t.nav_home, id: "home" }, { label: t.nav_about, id: "about" }, { label: t.nav_project, id: "projects" }, { label: t.nav_education, id: "education" }, { label: t.nav_contact, id: "contact" }] as item}
+        {#each [{ label: t.nav_home, id: "home" }, { label: t.nav_about, id: "about" }, { label: t.nav_experience, id: "experience" }, { label: t.nav_project, id: "projects" }, { label: t.nav_education, id: "education" }, { label: t.nav_contact, id: "contact" }] as item}
           <li>
             <button
               type="button"
@@ -133,7 +133,7 @@
       class="lg:hidden border-t border-white/[0.06] bg-[#0d0d18]/95 backdrop-blur-xl px-4 py-4"
     >
       <ul class="space-y-1 text-sm font-semibold uppercase tracking-wide">
-        {#each [{ label: t.nav_home, id: "home" }, { label: t.nav_about, id: "about" }, { label: t.nav_project, id: "projects" }, { label: t.nav_education, id: "education" }, { label: t.nav_contact, id: "contact" }] as item}
+        {#each [{ label: t.nav_home, id: "home" }, { label: t.nav_about, id: "about" }, { label: t.nav_experience, id: "experience" }, { label: t.nav_project, id: "projects" }, { label: t.nav_education, id: "education" }, { label: t.nav_contact, id: "contact" }] as item}
           <li>
             <button
               on:click={() => handleNav(item.id)}

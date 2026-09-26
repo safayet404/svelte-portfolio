@@ -10,9 +10,9 @@
         faReact,
         faGithub,
         faLinkedin,
-        faSquareJs,
+        faLaravel,
+        faVuejs,
     } from "@fortawesome/free-brands-svg-icons";
-    import { siNextdotjs, siSvelte, siMongodb } from "simple-icons";
     import Typewriter from "./Typewriter.svelte";
 </script>
 
@@ -34,7 +34,7 @@
                 tag="h1"
             />
             <Typewriter
-                text={`আমি একজন প্যাশনেট ওয়েব ডেভেলপার, যে কি না আধুনিক ওয়েব সল্যুশন তৈরিতে বিশ্বাসী`}
+                text={`একজন সফটওয়্যার ইঞ্জিনিয়ার, যে AI-চালিত মাল্টি-টেন্যান্ট SaaS তৈরি করে, LLM পাইপলাইন থেকে রিয়েল-টাইম সিস্টেম পর্যন্ত`}
                 speed={40}
                 className="mt-4 text-xl md:text-5xl font-bold text-white"
                 tag="h1"
@@ -47,7 +47,7 @@
                 tag="h1"
             />
             <Typewriter
-                text={`A passionate web developer with a flair for crafting elegant and efficient solutions`}
+                text={`A software engineer building AI-powered, multi-tenant SaaS, from LLM pipelines to real-time systems`}
                 speed={40}
                 className="mt-4 text-xl md:text-5xl font-bold text-white"
                 tag="h1"
@@ -93,9 +93,10 @@
                 {/if}
             </h1>
             <div class="flex gap-5 mt-5 text-3xl">
+                <FontAwesomeIcon icon={faLaravel} class="text-red-500" />
+                <FontAwesomeIcon icon={faVuejs} class="text-emerald-400" />
                 <FontAwesomeIcon icon={faNodeJs} class="text-green-500" />
                 <FontAwesomeIcon icon={faReact} class="text-cyan-500" />
-                <FontAwesomeIcon icon={faSquareJs} class="text-yellow-500" />
             </div>
         </div>
     </div>

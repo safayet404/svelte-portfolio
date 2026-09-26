@@ -12,56 +12,36 @@
         },
     ];
 
-    const professional = [
+    const skillGroups = [
         {
-            tech: "Javascript",
-            value: "81",
-            aos: "fade-left",
+            en: "Backend",
+            bn: "ব্যাকএন্ড",
+            items: ["Laravel (PHP)", "NestJS", "Node.js", "Express.js", "REST APIs", "GraphQL"],
         },
         {
-            tech: "React JS",
-            value: "90",
-            aos: "fade-left",
+            en: "Frontend",
+            bn: "ফ্রন্টএন্ড",
+            items: ["Vue.js", "React", "Next.js", "Nuxt", "SvelteKit", "Astro", "Tailwind CSS"],
         },
         {
-            tech: "Next JS",
-            value: "91",
-            aos: "fade-left",
+            en: "AI & LLM",
+            bn: "AI ও LLM",
+            items: ["LLM integration", "Multi-model fallback routing", "RAG (pgvector)", "Speech-to-text & TTS", "Human-in-the-loop review"],
         },
         {
-            tech: "SvelteKit",
-            value: "88",
-            aos: "fade-left",
+            en: "Data & real-time",
+            bn: "ডেটা ও রিয়েল-টাইম",
+            items: ["PostgreSQL (Row-Level Security)", "MySQL", "MongoDB", "Prisma", "Redis / BullMQ", "Socket.IO"],
         },
         {
-            tech: "Bootstrap",
-            value: "85",
-            aos: "fade-right",
+            en: "Auth & integrations",
+            bn: "অথ ও ইন্টিগ্রেশন",
+            items: ["JWT", "Sanctum", "RBAC", "Twilio (Voice & WhatsApp)", "IMAP / SMTP"],
         },
         {
-            tech: "Tailwind CSS",
-            value: "89",
-            aos: "fade-right",
-        },
-        {
-            tech: "Node JS",
-            value: "79",
-            aos: "fade-right",
-        },
-        {
-            tech: "Express JS",
-            value: "81",
-            aos: "fade-left",
-        },
-        {
-            tech: "MongoDB",
-            value: "84",
-            aos: "fade-right",
-        },
-        {
-            tech: "Github",
-            value: "85",
-            aos: "fade-left",
+            en: "Tooling & DevOps",
+            bn: "টুলিং ও ডেভঅপস",
+            items: ["Docker", "Turborepo / pnpm", "Git & GitHub", "Linux"],
         },
     ];
 </script>
@@ -295,10 +275,10 @@
                     {$locale === "bn" ? "পেশাগত দক্ষতা" : "Professional Skills"}
                 </span>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {#each professional as { tech, value }, index}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {#each skillGroups as group, index}
                         <div
-                            class="relative group border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm rounded-xl p-4 hover:border-red-500/20 transition-all duration-300"
+                            class="relative border border-white/[0.07] bg-white/[0.03] backdrop-blur-sm rounded-xl p-4 hover:border-red-500/20 transition-all duration-300"
                             data-aos={index % 2 === 0
                                 ? "fade-right"
                                 : "fade-left"}
@@ -309,31 +289,18 @@
                                 class="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
                             ></div>
 
-                            <div class="flex justify-between items-center mb-3">
-                                <h3
-                                    class="text-white font-semibold text-sm tracking-wide"
-                                >
-                                    {tech}
-                                </h3>
-                                <span
-                                    class="text-red-400 font-bold text-sm tabular-nums"
-                                    >{value}%</span
-                                >
-                            </div>
-
-                            <!-- Progress track -->
-                            <div
-                                class="h-1.5 bg-white/[0.06] rounded-full overflow-hidden"
+                            <h3
+                                class="text-red-400 font-semibold text-xs uppercase tracking-widest mb-3"
                             >
-                                <div
-                                    class="h-full rounded-full bg-gradient-to-r from-red-700 via-red-500 to-red-400 relative"
-                                    style="width: {value}%;"
-                                >
-                                    <!-- Shimmer sweep -->
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
-                                    ></div>
-                                </div>
+                                {$locale === "bn" ? group.bn : group.en}
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                {#each group.items as item}
+                                    <span
+                                        class="text-xs px-2.5 py-1 rounded-md bg-white/[0.05] border border-white/10 text-white/80"
+                                        >{item}</span
+                                    >
+                                {/each}
                             </div>
                         </div>
                     {/each}
