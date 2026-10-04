@@ -20,6 +20,10 @@
     live_url: string;
     featured: boolean;
   }> = [];
+
+  // Projects with a case study page, matched by title (projects come from the database).
+  const caseStudies: Record<string, string> = { leakfix: "/work/leakfix" };
+  const caseStudyFor = (title: string) => caseStudies[title.trim().toLowerCase().split(/\s/)[0]];
 </script>
 
 <div class="container mx-auto p-4 mt-20">
@@ -61,6 +65,13 @@
         </p>
 
         <div class="mt-10 flex gap-5 flex-wrap">
+          {#if caseStudyFor(project.title)}
+            <a
+              href={caseStudyFor(project.title)}
+              class="border border-[#FF014F] bg-[#FF014F]/10 font-semibold px-7 py-2 rounded-md text-white text-sm"
+              >{t.project_case_study}</a
+            >
+          {/if}
           {#if project.github_client_url}
             <a
               href={project.github_client_url}

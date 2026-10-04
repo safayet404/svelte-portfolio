@@ -41,6 +41,7 @@ export const translations: any = {
         "project_client": "Client Code",
         "project_server": "Server Code",
         "project_live": "Live Site",
+        "project_case_study": "Case Study",
 
         "blog_title": "Blog",
         "blog_view_all": "View all",
@@ -90,6 +91,7 @@ export const translations: any = {
         "project_client": "ক্লায়েন্ট কোড",
         "project_server": "সার্ভার কোড",
         "project_live": "লাইভ সাইট",
+        "project_case_study": "কেস স্টাডি",
 
         "blog_title": "ব্লগ",
         "blog_view_all": "সব দেখুন",

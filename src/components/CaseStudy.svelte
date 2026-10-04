@@ -22,10 +22,16 @@
         role: string[];
         skillsTitle: string;
         skills: string[];
+        /** Buttons under the subtitle, e.g. source code and package links. */
+        links?: { label: string; href: string }[];
     };
 
     export let content: { en: CaseStudyContent; bn: CaseStudyContent };
-    export let meta: { title: string; description: string; url: string };
+    export let meta: { title: string; description: string; url: string; image?: string };
+    /** Where the back link goes: experience for work initiatives, projects for side projects. */
+    export let backHref = "/#experience";
+    /** Optional demo shown under the header. */
+    export let media: { src: string; alt: string } | undefined = undefined;
 
     $: c = content[$locale === "bn" ? "bn" : "en"];
 </script>
@@ -38,7 +44,7 @@
     <meta property="og:title" content={meta.title} />
     <meta property="og:description" content={meta.description} />
     <meta property="og:url" content={meta.url} />
-    <meta property="og:image" content="https://safayet.me/safayet.png" />
+    <meta property="og:image" content={meta.image ?? "https://safayet.me/safayet.png"} />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={meta.title} />
     <meta name="twitter:description" content={meta.description} />
@@ -46,7 +52,7 @@
 
 <article class="container mx-auto p-4 mt-16 mb-24 max-w-4xl">
     <a
-        href="/#experience"
+        href={backHref}
         class="text-sm text-white/50 hover:text-[#FF014F] transition-colors"
         >{c.back}</a
     >
@@ -72,7 +78,29 @@
         >
             {c.note}
         </p>
+        {#if c.links?.length}
+            <div class="mt-6 flex flex-wrap gap-3">
+                {#each c.links as link}
+                    <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="border border-white/20 hover:border-[#FF014F] hover:text-[#FF014F] transition-colors font-semibold px-5 py-2 rounded-md text-white text-sm"
+                        >{link.label} ↗</a
+                    >
+                {/each}
+            </div>
+        {/if}
     </header>
+
+    {#if media}
+        <img
+            src={media.src}
+            alt={media.alt}
+            loading="lazy"
+            class="mt-10 w-full rounded-xl border border-white/10"
+        />
+    {/if}
 
     <!-- Problem -->
     <section class="mt-16">

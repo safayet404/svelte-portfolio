@@ -11,6 +11,9 @@ export const GET: RequestHandler = async () => {
     const staticPages = [
         { url: 'https://safayet.me', priority: '1.0', changefreq: 'monthly' },
         { url: 'https://safayet.me/blog', priority: '0.9', changefreq: 'weekly' },
+        { url: 'https://safayet.me/work/leakfix', priority: '0.8', changefreq: 'monthly' },
+        { url: 'https://safayet.me/work/nexora', priority: '0.7', changefreq: 'monthly' },
+        { url: 'https://safayet.me/work/cas-shield', priority: '0.7', changefreq: 'monthly' },
     ];
 
     const blogPages = (blogs ?? []).map((b) => ({
