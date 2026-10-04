@@ -1,8 +1,50 @@
 <script lang="ts">
+    import { deserialize } from '$app/forms';
     import type { PageData } from './$types';
     export let data: PageData;
 
+    let projects = data.projects ?? [];
     $: projects = data.projects ?? [];
+
+    // Drag and drop to reorder; the new order is saved as soon as it changes.
+    let dragIndex: number | null = null;
+    let overIndex: number | null = null;
+    let saveState: 'idle' | 'saving' | 'saved' | 'error' = 'idle';
+    let saveError = '';
+
+    function move(from: number, to: number) {
+        if (from === to || to < 0 || to >= projects.length) return;
+        const next = [...projects];
+        const [item] = next.splice(from, 1);
+        next.splice(to, 0, item);
+        projects = next.map((p, i) => ({ ...p, display_order: i }));
+        saveOrder();
+    }
+
+    async function saveOrder() {
+        saveState = 'saving';
+        const body = new FormData();
+        body.set('ids', JSON.stringify(projects.map((p) => String(p.id))));
+        try {
+            const res = await fetch('?/reorder', { method: 'POST', body, headers: { 'x-sveltekit-action': 'true' } });
+            const result = deserialize(await res.text());
+            if (result.type === 'success') {
+                saveState = 'saved';
+                setTimeout(() => saveState === 'saved' && (saveState = 'idle'), 2000);
+            } else {
+                saveState = 'error';
+                saveError = result.type === 'failure' ? String(result.data?.error ?? 'Could not save') : 'Could not save';
+            }
+        } catch {
+            saveState = 'error';
+            saveError = 'Network error, order not saved';
+        }
+    }
+
+    function onDrop(index: number) {
+        if (dragIndex !== null) move(dragIndex, index);
+        dragIndex = overIndex = null;
+    }
 
     const statusColor: Record<string, string> = {
         completed: 'bg-green-400/20 text-green-400 border-green-400/30',
@@ -18,7 +60,12 @@
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div>
                 <h1 class="text-xl font-black">Projects</h1>
-                <p class="text-white/40 text-xs mt-0.5">{projects.length} projects</p>
+                <p class="text-white/40 text-xs mt-0.5">
+                    {projects.length} projects · drag to reorder
+                    {#if saveState === 'saving'}<span class="ml-2 text-white/60">Saving…</span>{/if}
+                    {#if saveState === 'saved'}<span class="ml-2 text-green-400">Order saved</span>{/if}
+                    {#if saveState === 'error'}<span class="ml-2 text-red-400">{saveError}</span>{/if}
+                </p>
             </div>
             <div class="flex items-center gap-3">
                 <a href="/admin/projects/new"
@@ -42,9 +89,22 @@
                 </a>
             </div>
         {:else}
-            <div class="grid gap-3">
-                {#each projects as project}
-                    <div class="group flex items-center gap-4 border border-white/[0.07] bg-white/[0.03] rounded-xl px-4 py-3 hover:border-white/15 transition-all duration-200">
+            <div class="grid gap-3" role="list">
+                {#each projects as project, index (project.id)}
+                    <div
+                        role="listitem"
+                        draggable="true"
+                        on:dragstart={(e) => { dragIndex = index; e.dataTransfer?.setData('text/plain', String(index)); }}
+                        on:dragover|preventDefault={() => (overIndex = index)}
+                        on:dragleave={() => overIndex === index && (overIndex = null)}
+                        on:drop|preventDefault={() => onDrop(index)}
+                        on:dragend={() => (dragIndex = overIndex = null)}
+                        class="group flex items-center gap-4 border bg-white/[0.03] rounded-xl px-4 py-3 hover:border-white/15 transition-all duration-200 cursor-grab active:cursor-grabbing
+                            {overIndex === index && dragIndex !== index ? 'border-[#FF014F]/60' : 'border-white/[0.07]'}
+                            {dragIndex === index ? 'opacity-40' : ''}">
+                        <!-- Drag handle -->
+                        <span class="flex-shrink-0 text-white/25 group-hover:text-white/50 select-none text-lg leading-none" aria-hidden="true">⠿</span>
+
                         <!-- Cover thumbnail -->
                         <div class="flex-shrink-0 w-14 h-10 rounded-lg overflow-hidden bg-white/5">
                             {#if project.cover_image}
@@ -68,7 +128,7 @@
                                 <p class="text-white/30 text-xs mt-0.5">
                                     {project.role || '—'}
                                     <span class="mx-1.5">·</span>
-                                    Order: {project.display_order}
+                                    Position: {index + 1}
                                 </p>
                             </div>
                         </div>
@@ -78,6 +138,13 @@
                         </span>
 
                         <div class="flex items-center gap-2 flex-shrink-0">
+                            <!-- Buttons for touch screens and keyboards, where dragging doesn't work -->
+                            <button type="button" on:click={() => move(index, index - 1)} disabled={index === 0}
+                                aria-label="Move {project.title} up"
+                                class="text-xs text-white/60 hover:text-white px-2 py-1.5 rounded-lg border border-white/10 hover:border-white/20 disabled:opacity-25 disabled:cursor-not-allowed">↑</button>
+                            <button type="button" on:click={() => move(index, index + 1)} disabled={index === projects.length - 1}
+                                aria-label="Move {project.title} down"
+                                class="text-xs text-white/60 hover:text-white px-2 py-1.5 rounded-lg border border-white/10 hover:border-white/20 disabled:opacity-25 disabled:cursor-not-allowed">↓</button>
                             <a href="/admin/projects/{project.id}/edit"
                                 class="text-xs text-white/60 hover:text-white px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20 transition-colors">
                                 Edit
