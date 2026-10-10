@@ -30,8 +30,10 @@
     export let meta: { title: string; description: string; url: string; image?: string };
     /** Where the back link goes: experience for work initiatives, projects for side projects. */
     export let backHref = "/#experience";
-    /** Optional demo shown under the header. */
-    export let media: { src: string; alt: string } | undefined = undefined;
+    /** Optional demos shown under the header: images/GIFs, or videos (autoplay, muted, looping). */
+    type Media = { src: string; alt: string; video?: boolean; poster?: string; narrow?: boolean };
+    export let media: Media | Media[] | undefined = undefined;
+    $: mediaList = media ? (Array.isArray(media) ? media : [media]) : [];
 
     $: c = content[$locale === "bn" ? "bn" : "en"];
 </script>
@@ -93,13 +95,31 @@
         {/if}
     </header>
 
-    {#if media}
-        <img
-            src={media.src}
-            alt={media.alt}
-            loading="lazy"
-            class="mt-10 w-full rounded-xl border border-white/10"
-        />
+    {#if mediaList.length}
+        <div class="mt-10 flex flex-col md:flex-row gap-6 items-start">
+            {#each mediaList as m}
+                {#if m.video}
+                    <video
+                        src={m.src}
+                        poster={m.poster}
+                        aria-label={m.alt}
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                        class="rounded-xl border border-white/10 {m.narrow ? 'w-1/2 mx-auto md:mx-0 md:w-[22%] md:flex-none' : 'w-full md:w-auto md:flex-1 min-w-0'}"
+                    ></video>
+                {:else}
+                    <img
+                        src={m.src}
+                        alt={m.alt}
+                        loading="lazy"
+                        class="rounded-xl border border-white/10 {m.narrow ? 'w-1/2 mx-auto md:mx-0 md:w-[22%] md:flex-none' : 'w-full md:w-auto md:flex-1 min-w-0'}"
+                    />
+                {/if}
+            {/each}
+        </div>
     {/if}
 
     <!-- Problem -->

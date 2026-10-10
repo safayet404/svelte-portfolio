@@ -22,7 +22,7 @@
   }> = [];
 
   // Projects with a case study page, matched by title (projects come from the database).
-  const caseStudies: Record<string, string> = { leakfix: "/work/leakfix" };
+  const caseStudies: Record<string, string> = { leakfix: "/work/leakfix", karbar: "/work/karbar" };
   const caseStudyFor = (title: string) => caseStudies[title.trim().toLowerCase().split(/\s/)[0]];
 </script>
 
